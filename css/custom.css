@@ -31,6 +31,16 @@ p {
     transform: translate(-50%,-50%);
 }
 
+.container, .row {
+    height: 100%;
+}
+
+.square {
+    width: 100%;
+    padding-top:100%;
+    border: #FFF solid;
+}
+
 #preloader {
     position: fixed;
     top: 0;
