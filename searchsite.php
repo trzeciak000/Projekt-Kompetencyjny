@@ -50,7 +50,7 @@
 
                 <div class="col-md-4 mb-4">
                   <div class="square">
-                    <a class="link" href="przepis.html">
+                    <a class="link" href="przepis.php">
                       <div class="content" style="background-image: url(https://i0.wp.com/slowcookergourmet.net/wp-content/uploads/2018/02/Instant-Pot-Spaghetti-4-of-5.jpg?resize=500%2C500&ssl=1); background-size: cover;">
                         <p class="text-light" style="font-size: 1.25rem">Spaghetti z kurczakiem</p> 
                       </div>

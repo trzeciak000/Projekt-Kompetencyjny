@@ -36,7 +36,7 @@
             
             <div class="col-12 col-md-4">
               <div class="square" style="background-color:steelblue">
-                <a class="link" href="searchsite.html">
+                <a class="link" href="searchsite.php">
                   <div class="content">
                     <i class="fas fa-search fa-4x"></i>
                     <p class="text-center mt-3">Wyszukaj przepis wg. składników</p>
@@ -58,7 +58,7 @@
 
             <div class="col-12 col-md-4">
               <div class="square" >
-                <a class="link" href="przepis.html">
+                <a class="link" href="przepis.php">
                   <div class="content" style="background-color: #F63D3A">
                       <i class="fas fa-grin-alt fa-4x"></i>
                       <p class="text-center mt-3">Zaskocz mnie :-)</p>
