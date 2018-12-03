@@ -33,7 +33,7 @@
             <?php if($zdjecie == null || $zdjecie == "") : ?>
                 <img src="img/przepisy/brak.png" width="200" height="200">
             <?php else : ?>
-                <img src="img/przepisy/<?php echo $zdjecie; ?>" width="200" height="200">
+                <img src="img/przepisy/<?php echo $zdjecie; ?>" alt="img/przepisy/brak.png" width="200" height="200">
             <?php endif; ?>
         </div>
         <div class="col-lg-9 col-sm-18 right">
