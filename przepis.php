@@ -49,7 +49,7 @@
             </div>
         </div>
     </div>
-
+    <img src="img/przepisy/makowki_slaskie.jpeg">
 
     <!-- JavaScript -->
     <script src="js/jquery-3.3.1.min.js"></script>
