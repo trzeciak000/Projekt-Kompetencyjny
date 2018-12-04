@@ -22,6 +22,7 @@ if (isset($_POST['submit'])) {
                 "login" => $result['Nazwa'],
                 "role_id" => $result['role_id']
             );
+            header("Location: logowanie.php");
         }
         else echo "Wpisano złe dane.";
     } else {
@@ -58,10 +59,6 @@ if (isset($_POST['submit'])) {
     </div>
 <?php else : ?>
     Jesteś zalogowany.
-    <form method="post" action="logout.php">
-        <input type="submit" name="submit" value="Wyloguj">
-    </form>
-
 <?php endif; ?>
 </body>
 </html>
