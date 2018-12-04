@@ -1,32 +1,43 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Rejestracja</title>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/custom.css">
 </head>
 <body>
+<?php if ( !isset($_SESSION['zalogowany'])) : ?>
 <div class="panel2">
     <div class="panel-heading">
-        <h3 class="panel-title">Register new account</h3>
+        <h3 class="panel-title">Zarejestruj nowe konto:</h3>
     </div>
     <div class="panel-body">
         <form method="post" action="rejestracja.php">
             <div class="form-group">
-                <label>Username</label>
+                <label>Nazwa użytkownika</label>
                 <input type="text" name="name" class="form-control" />
             </div>
             <div class="form-group">
-                <label>Password</label>
+                <label>Hasło</label>
                 <input type="password" name="password" class="form-control" />
             </div>
             <div class="form-group">
-                <label>Repeat password</label>
+                <label>Powtórz hasło</label>
                 <input type="password" name="password2" class="form-control" />
             </div>
             <input class="btn btn-primary" name="submit" type="submit" value="Submit">
         </form>
     </div>
 </div>
+<?php else : ?>
+Jesteś aktualnie zalogowany.
+    <form method="post" action="logout.php">
+        <input type="submit" name="submit" value="Wyloguj">
+    </form>
+<?php endif; ?>
 </body>
 </html>
 
