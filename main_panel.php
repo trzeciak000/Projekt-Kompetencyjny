@@ -1,7 +1,7 @@
 <?php
     session_start();
 ?>
-<nav id="mainNavbar" class="navbar navbar-dark navbar-expand-lg" style="background-color: #2a2f4a;">
+<nav id="mainNavbar" class="navbar navbar-light bg-light navbar-expand-lg">
 	<a href="" id="brand" class="navbar-brand ml-2 mr-auto">What2eat</a>
 
 	<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
