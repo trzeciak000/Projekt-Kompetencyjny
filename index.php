@@ -1,3 +1,7 @@
+<?php
+    require "config.php";
+    include "main_panel.php";
+?>
 <!doctype html>
 <html lang="pl">
   <head>
@@ -8,7 +12,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/custom.css">
+      <link rel="stylesheet" href="css/custom.css">
     <link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet">
 
   </head>
@@ -47,7 +51,7 @@
 
             <div class="col-12 col-md-4">
                 <div class="square">
-                  <a class="link"  href="listall.html">
+                  <a class="link"  href="views/listall.php">
                     <div class="content" style="background-color:seagreen">  
                       <i class="fas fa-list fa-4x"></i>
                       <p class="text-center mt-3">Pokaż wszystkie przepisy</p>
@@ -58,7 +62,7 @@
 
             <div class="col-12 col-md-4">
               <div class="square" >
-                <a class="link" href="przepis.php">
+                <a class="link" href="views/losowy_przepis.php">
                   <div class="content" style="background-color: #F63D3A">
                       <i class="fas fa-grin-alt fa-4x"></i>
                       <p class="text-center mt-3">Zaskocz mnie :-)</p>

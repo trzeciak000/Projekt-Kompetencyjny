@@ -1,5 +1,6 @@
 <?php
-    require "config.php";
+    include "../config.php";
+    include "../main_panel.php";
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     $conn->query("SET CHARSET utf8");
     $sql = "SELECT * FROM przepisy WHERE visible=1;";
@@ -24,16 +25,16 @@
     <title>What2Eat</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/custom.css">
   </head>
   <body>
     <div class="fullscreen">
         <div class="col-lg-3 col-sm-6 left">
             <?php if($zdjecie == null || $zdjecie == "") : ?>
-                <img src="img/przepisy/brak.png" width="200" height="200">
+                <img src="../img/przepisy/brak.png" width="200" height="200">
             <?php else : ?>
-                <img src="img/przepisy/<?php echo $zdjecie; ?>" width="200" height="200">
+                <img src="../img/przepisy/<?php echo $zdjecie; ?>" alt="../img/przepisy/brak.png" width="200" height="200">
             <?php endif; ?>
         </div>
         <div class="col-lg-9 col-sm-18 right">
@@ -55,10 +56,10 @@
     
 
     <!-- JavaScript -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/all.min.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/custom.js"></script>
+    <script src="../js/all.min.js"></script>
   </body>
 </html>
