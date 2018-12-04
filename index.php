@@ -51,7 +51,7 @@
 
             <div class="col-12 col-md-4">
                 <div class="square">
-                  <a class="link"  href="listall.html">
+                  <a class="link"  href="views/listall.php">
                     <div class="content" style="background-color:seagreen">  
                       <i class="fas fa-list fa-4x"></i>
                       <p class="text-center mt-3">Pokaż wszystkie przepisy</p>
