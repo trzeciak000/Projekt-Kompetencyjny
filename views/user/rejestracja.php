@@ -1,5 +1,6 @@
 <?php
-    session_start();
+    require "../../config.php";
+    include "../../main_panel.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,7 +11,7 @@
 </head>
 <body>
 <?php if ( !isset($_SESSION['zalogowany'])) : ?>
-<div class="panel2">
+<div class="panel2"><br /><br />
     <div class="panel-heading">
         <h3 class="panel-title">Zarejestruj nowe konto:</h3>
     </div>
@@ -28,7 +29,7 @@
                 <label>Powtórz hasło</label>
                 <input type="password" name="password2" class="form-control" />
             </div>
-            <input class="btn btn-primary" name="submit" type="submit" value="Submit">
+            <input class="btn btn-primary" name="submit" type="submit" value="Zarejestruj">
         </form>
     </div>
 </div>
@@ -42,7 +43,6 @@ Jesteś aktualnie zalogowany.
 </html>
 
 <?php
-    require "../../config.php";
     $connect = mysqli_connect(DB_HOST,DB_USER,DB_PASS, DB_NAME);
     $connect->query("SET CHARSET utf8");
 

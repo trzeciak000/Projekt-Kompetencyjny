@@ -1,6 +1,6 @@
 <?php
-session_start();
 require "../../config.php";
+include "../../main_panel.php";
 $connect = mysqli_connect(DB_HOST,DB_USER,DB_PASS, DB_NAME);
 $connect->query("SET CHARSET utf8");
 
@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['zalogowany'] = true;
             $_SESSION['dane_usera'] = array(
                 "id" => $result['IDUzytkownika'],
-                "Nazwa" => $result['Nazwa'],
+                "login" => $result['Nazwa'],
                 "role_id" => $result['role_id']
             );
         }
@@ -38,9 +38,9 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
 <?php if( !isset($_SESSION['zalogowany']) ) : ?>
-    <div class="panel2">
+    <div class="panel2"><br /><br />
         <div class="panel-heading">
-            <h3 class="panel-title">Login</h3>
+            <h3 class="panel-title">Logowanie</h3>
         </div>
         <div class="panel-body">
             <form method="post" action="logowanie.php">
@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
                     <label>Hasło:</label>
                     <input type="password" name="password" class="form-control" />
                 </div>
-                <input class="btn btn-primary" name="submit" type="submit" value="Submit">
+                <input class="btn btn-primary" name="submit" type="submit" value="Zaloguj">
             </form>
         </div>
     </div>

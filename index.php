@@ -1,3 +1,7 @@
+<?php
+    require "config.php";
+    include "main_panel.php";
+?>
 <!doctype html>
 <html lang="pl">
   <head>
