@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "../../config.php";
 $connect = mysqli_connect(DB_HOST,DB_USER,DB_PASS, DB_NAME);
 $connect->query("SET CHARSET utf8");
@@ -15,6 +16,7 @@ if (isset($_POST['submit'])) {
         if (mysqli_num_rows(mysqli_query($connect, "SELECT Nazwa, Haslo FROM uzytkownicy WHERE Nazwa = '".$login."' AND Haslo = '".md5($haslo)."';")) > 0) {
             $sql = "SELECT IDUzytkownika, Nazwa, role_id FROM uzytkownicy WHERE Nazwa='" . $login . "';";
             $result = $connect->query($sql)->fetch_assoc();
+            var_dump($result);
             $_SESSION['zalogowany'] = true;
             $_SESSION['dane_usera'] = array(
                 "id" => $result['IDUzytkownika'],
@@ -43,11 +45,11 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-<?php if ( !isset($_SESSION['zalogowany'])) : ?>
     <div class="fullscreen d-flex align-items-center" style="background:url('../../img/food_bg_blurred.jpg') no-repeat fixed center; background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-4 m-auto text-center bg-light">
+                    <?php if ( !isset($_SESSION['zalogowany'])) : ?>
                     <h4 class="text-dark my-4">Zaloguj się</h4>
                     <form method="post" action="logowanie.php">
                         <div class="form-group">
@@ -65,18 +67,18 @@ if (isset($_POST['submit'])) {
                         Nie masz konta? <a class="text-info" href="<?php echo ROOT_PATH; ?>views/user/rejestracja.php">Zarejestruj się</a><br>
                         
                     </p>
-                    
+                    <?php else : ?>
+                        Jesteś aktualnie zalogowany.
+                        <form method="post" action="logout.php">
+                            <input type="submit" name="submit" value="Wyloguj">
+                        </form>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
     </div>
 
-<?php else : ?>
-Jesteś aktualnie zalogowany.
-    <form method="post" action="logout.php">
-        <input type="submit" name="submit" value="Wyloguj">
-    </form>
-<?php endif; ?>
+
 
     <!-- JavaScript -->
     <script src="../../js/jquery-3.3.1.min.js"></script>
