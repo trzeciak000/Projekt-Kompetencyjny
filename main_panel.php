@@ -2,7 +2,7 @@
     session_start();
 ?>
 <nav id="mainNavbar" class="navbar navbar-light bg-light navbar-expand-lg">
-	<a href="" id="brand" class="navbar-brand ml-2 mr-auto">What2eat</a>
+	<a href="<?php echo ROOT_PATH; ?>" id="brand" class="navbar-brand ml-2 mr-auto">What2eat</a>
 
 	<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>

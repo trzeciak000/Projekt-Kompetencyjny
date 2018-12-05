@@ -1,5 +1,6 @@
 <?php
     require "../../config.php";
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -15,11 +16,11 @@
 </head>
 
 <body>
-<?php if ( !isset($_SESSION['zalogowany'])) : ?>
     <div class="fullscreen d-flex align-items-center" style="background:url('../../img/food_bg_blurred.jpg') no-repeat fixed center; background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-4 m-auto text-center bg-light">
+                    <?php if ( !isset($_SESSION['zalogowany'])) : ?>
                     <h4 class="text-dark my-4">Utwórz konto</h4>
                     <form method="post" action="rejestracja.php">
                         <div class="form-group">
@@ -41,18 +42,17 @@
                         Masz już konto? <a class="text-info" href="<?php echo ROOT_PATH; ?>views/user/logowanie.php">Zaloguj się</a><br>
                         Rejestrując się akceptujesz <a class="text-info" href="">Regulamin</a>
                     </p>
-                    
+                    <?php else : ?>
+                        Jesteś aktualnie zalogowany.
+                        <form method="post" action="logout.php">
+                            <input type="submit" name="submit" value="Wyloguj">
+                        </form>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
     </div>
 
-<?php else : ?>
-Jesteś aktualnie zalogowany.
-    <form method="post" action="logout.php">
-        <input type="submit" name="submit" value="Wyloguj">
-    </form>
-<?php endif; ?>
 
     <!-- JavaScript -->
     <script src="../../js/jquery-3.3.1.min.js"></script>
