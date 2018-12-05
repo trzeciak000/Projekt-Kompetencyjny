@@ -34,15 +34,18 @@
         array_push($kategorie, $row);
     }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Wszystkie przepisy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>What2Eat | Przepisy</title>
+    
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/custom.css">
 </head>
 <body>
-<br /><br />
 <!--<form method="post" action="listall.php">-->
 <!--    <label>Zobacz wg kategorii: </label>-->
 <!--    <select name="category">-->
@@ -53,40 +56,63 @@
 <!--    </select>-->
 <!--    <input class="btn btn-primary" type="submit" name="kategoria" value="Zobacz">-->
 <!--</form><br />-->
-<form method="post" action="listall.php">
-    <label>Sortuj według: </label>
-    <select name="sortowanie">
-        <option value="0">Nazwy A-Z</option>
-        <option value="1">Nazwy Z-A</option>
-        <option value="2">Czasu rosnąco</option>
-        <option value="3">Czasu malejąco</option>
-    </select>
-    <input class="btn btn-primary" type="submit" name="sortuj" value="Sortuj">
-</form><br /><br />
-<?php foreach ($przepisy as $przepis) : ?>
-    <?php
-        $sql = "SELECT Link FROM obrazy_przepisy WHERE IDPrzepisu = '" . $przepis['IDPrzepisu'] . "' LIMIT 1;";
-        $zdjecie = $conn->query($sql)->fetch_assoc();
-        $zdjecie = $zdjecie['Link'];
-    ?>
-    <div style="display: flex">
-        <div class="col-lg-3 col-sm-6 left">
-            <?php if ($zdjecie == null || $zdjecie == "") : ?>
-            <img src="<?php echo ROOT_URL; ?>img/przepisy/brak.png" alt="<?php echo ROOT_URL; ?>img/przepisy/brak.png" width="150px" height="150px">
-            <?php else : ?>
-            <img src="<?php echo ROOT_URL; ?>img/przepisy/<?php echo $zdjecie; ?>" alt="<?php echo ROOT_URL; ?>img/przepisy/brak.png" width="150px" height="150px">
-            <?php endif; ?>
-            <br /><br />
-        </div>
-        <div class="col-lg-9 col-sm-18 right">
-            <b>Nazwa: </b><?php echo $przepis['Nazwa']; ?><br /><br />
-            <small><b>Kategoria: </b><?php foreach($kategorie as $row) {if($row['id'] == $przepis['id_kategorii']){echo $row['kategoria']; break;}}?></small><small><b> Czas przygotowania:</b> <?php echo $przepis['CzasPrzygotowania']; ?></small><br />
-            <b>Opis: </b><?php echo $przepis['Opis'] ?><br /><br />
+    <div class="fullscreen" style="overflow-y: scroll;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-8 col-lg-6">
+                    <h4 class="text-dark">Przepisy</h4>
+                    <form method="post" action="listall.php">
+                        <div class="form-row align-items-center">
+                            <div class="col-md-3">
+                                <label class="text-dark">Sortuj według </label>
+                            </div>
+                            <div class="col-md-5">
+                                <select name="sortowanie" type="text" class="form-control">
+                                    <option value="0">Nazwa A-Z</option>
+                                    <option value="1">Nazwa Z-A</option>
+                                    <option value="2">Czas rosnąco</option>
+                                    <option value="3">Czas malejąco</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <button name="sortuj" type="submit" class="btn btn-outline-dark btn-block">Sortuj</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card-columns">
+                <?php foreach ($przepisy as $przepis) : ?>
+                <?php
+                    $sql = "SELECT Link FROM obrazy_przepisy WHERE IDPrzepisu = '" . $przepis['IDPrzepisu'] . "' LIMIT 1;";
+                    $zdjecie = $conn->query($sql)->fetch_assoc();
+                    $zdjecie = $zdjecie['Link'];
+                ?>
+                <div class="card">
+                    <img class="card-img-top"
+                        <?php if ($zdjecie == null || $zdjecie == "") : ?> src="<?php echo ROOT_PATH; ?>img/przepisy/brak.png"
+                        <?php else : ?> src="<?php echo ROOT_PATH; ?>img/przepisy/<?php echo $zdjecie; ?>"<?php endif; ?>
+                    >    
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $przepis['Nazwa']; ?></h5>
+                        <p class="card-text"><?php echo $przepis['Opis'] ?></p>
+                        <p class="card-tex">
+                            <i class="fas fa-th"></i> <?php foreach($kategorie as $row) {if($row['id'] == $przepis['id_kategorii']){echo $row['kategoria']; break;}}?>
+                            <i class="far fa-clock"></i> <?php echo $przepis['CzasPrzygotowania']; ?>
+                        </p>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
-<?php endforeach; ?>
-
-
-
+    
+    <!-- JavaScript -->
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/all.min.js"></script>
+    <script src="../js/custom.js"></script>
 </body>
 </html>

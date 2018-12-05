@@ -1,6 +1,5 @@
 <?php
 require "../../config.php";
-include "../../main_panel.php";
 $connect = mysqli_connect(DB_HOST,DB_USER,DB_PASS, DB_NAME);
 $connect->query("SET CHARSET utf8");
 
@@ -30,35 +29,60 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Logowanie</title>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>What2Eat | Logowanie</title>
+    
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/custom.css">
 </head>
+
 <body>
-<?php if( !isset($_SESSION['zalogowany']) ) : ?>
-    <div class="panel2"><br /><br />
-        <div class="panel-heading">
-            <h3 class="panel-title">Logowanie</h3>
-        </div>
-        <div class="panel-body">
-            <form method="post" action="logowanie.php">
-                <div class="form-group">
-                    <label>Nazwa użytkownika</label>
-                    <input type="text" name="name" class="form-control" />
+<?php if ( !isset($_SESSION['zalogowany'])) : ?>
+    <div class="fullscreen d-flex align-items-center" style="background:url('../../img/food_bg_blurred.jpg') no-repeat fixed center; background-size: cover;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-4 m-auto text-center bg-light">
+                    <h4 class="text-dark my-4">Zaloguj się</h4>
+                    <form method="post" action="logowanie.php">
+                        <div class="form-group">
+                            <input name="name" type="text" class="form-control" placeholder="Nazwa użytkownika">
+                        </div>
+    
+                        <div class="form-group">
+                            <input name="password" type="password" class="form-control" placeholder="Hasło">
+                        </div>
+    
+                        <button name="submit" type="submit" class="btn btn-outline-dark btn-block mb-4">Zaloguj</button>
+                    </form>
+                    
+                    <p class="text-secondary mb-4">
+                        Nie masz konta? <a class="text-info" href="<?php echo ROOT_PATH; ?>views/user/rejestracja.php">Zarejestruj się</a><br>
+                        
+                    </p>
+                    
                 </div>
-                <div class="form-group">
-                    <label>Hasło:</label>
-                    <input type="password" name="password" class="form-control" />
-                </div>
-                <input class="btn btn-primary" name="submit" type="submit" value="Zaloguj">
-            </form>
+            </div>
         </div>
     </div>
+
 <?php else : ?>
-    Jesteś zalogowany.
+Jesteś aktualnie zalogowany.
+    <form method="post" action="logout.php">
+        <input type="submit" name="submit" value="Wyloguj">
+    </form>
 <?php endif; ?>
+
+    <!-- JavaScript -->
+    <script src="../../js/jquery-3.3.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/all.min.js"></script>
+    <script src="../../js/custom.js"></script>
 </body>
 </html>

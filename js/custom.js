@@ -12,10 +12,10 @@ else {
     });
 }*/
 
-$(window).ready(function() {
+/*$(window).ready(function() {
     $('.load').delay(1200).fadeOut();
     $('#preloader').delay(2000).fadeOut();
-});
+});*/
 
 /*$(document).ready(function() {
     $('body').css('display', 'none');
