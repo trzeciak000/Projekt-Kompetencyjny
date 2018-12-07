@@ -1,6 +1,6 @@
 <?php
     require "config.php";
-    include "main_panel.php";
+    include "navbar.php";
 ?>
 <!doctype html>
 <html lang="pl">
@@ -13,59 +13,35 @@
         <!-- CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/custom.css">
-        <link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet">
+
     </head>
     
     <body>
-        <div id="preloader">
-          <div class="load">
-            <i></i>
-            <i></i>
-            <i></i>
-            <i></i>
-          </div>
-          <h2 class="h2">Myślimy nad fajnym logiem</h2>
-        </div>
-
-        <div class="wrapper">
-            <div class="fullscreen d-flex align-items-center justify-content-center">
-                <div class="container">
-                  <div class="row">
-                  
-                    <div class="col-12 col-md-4">
-                      <div class="square" style="background-color:steelblue">
-                        <a class="link" href="searchsite.php">
-                          <div class="content">
-                            <i class="fas fa-search fa-4x"></i>
-                            <p class="text-center mt-3">Wyszukaj przepis wg. składników</p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-    
-                    <div class="col-12 col-md-4">
-                        <div class="square">
-                          <a class="link"  href="views/listall.php">
-                            <div class="content" style="background-color:seagreen">  
-                              <i class="fas fa-list fa-4x"></i>
-                              <p class="text-center mt-3">Pokaż wszystkie przepisy</p>
-                            </div>
-                          </a>
+        <div class="fullscreen d-flex align-items-center" style="background:url('img/food_bg_blurred.jpg') no-repeat fixed center; background-size: cover;">
+            <div class="container">
+                <div class="row justify-items-center">
+                    <div class="col-11 col-sm-8 col-md-6 col-lg-4 bg-white m-auto p-4">
+                        <h2 class="h2 text-center mb-4">Przegląd lodówki</h2>
+                        <div class="icon-to-icon mb-4">
+                            <img class="rounded-circle" src="img/fridge_icon.png" alt="">
+                            <i class="fas fa-angle-right fa-3x" ></i>
+                            <img class="rounded-circle" src="img/meal_icon.png" alt="">
                         </div>
+                        <p>Coś zalega Ci w lodówce i nie masz pomysłu jak to wykorzystać? Znajdź go tutaj!</p>
+                        <a href="<?php echo ROOT_URL; ?>search.php" class="btn btn-danger btn-block btn-lg">Zacznij teraz</a>
                     </div>
-    
-                    <div class="col-12 col-md-4">
-                      <div class="square" >
-                        <a class="link" href="views/losowy_przepis.php">
-                          <div class="content" style="background-color: #F63D3A">
-                              <i class="fas fa-grin-alt fa-4x"></i>
-                              <p class="text-center mt-3">Zaskocz mnie :-)</p>
-                          </div>
-                        </a>
-                      </div>
+                    <div class="col-11 col-sm-8 col-md-6 col-lg-4 bg-white m-auto p-4">
+                        <h2 class="h2 text-center mb-4">Chcesz więcej?</h2>
+                        <div class="icon-to-icon mb-4">
+                            <img class="rounded-circle" src="img/user-avatar.png" alt="">
+                            <i class="fas fa-angle-right fa-3x" ></i>
+                            <img class="rounded-circle" src="img/user-avatar-color.jpg" alt="">
+                        </div>
+                        <p>Nie bądź szarakiem!<br>Zarejestruj się w aplikacji aby uzyskać dostęp ukrytych pereł kulinarnego świata i innych osób, które z praktycznie niczego robią coś dobrego!</p>
+                        <a href="<?php echo ROOT_URL; ?>search.php" class="btn btn-danger btn-block btn-lg">Zacznij teraz</a>
                     </div>
                 </div>
-    
+                
             </div>
         </div>
 
@@ -75,5 +51,6 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/all.min.js"></script>
         <script src="js/custom.js"></script>
+        <script src="js/offcanvas.js"></script>
     </body>
 </html>
