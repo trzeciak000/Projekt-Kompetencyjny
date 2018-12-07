@@ -17,7 +17,7 @@
     </head>
     
     <body>
-        <div class="fullscreen d-flex align-items-center" style="background:url('img/food_bg_blurred.jpg') no-repeat fixed center; background-size: cover;">
+        <div class="fullscreen" style="background:url('img/food_bg_blurred.jpg') no-repeat fixed center; background-size: cover;">
             <div class="container">
                 <div class="row justify-items-center">
                     <div class="col-11 col-sm-8 col-md-6 col-lg-4 bg-white m-auto p-4">
@@ -35,7 +35,7 @@
                         <div class="icon-to-icon mb-4">
                             <img class="rounded-circle" src="img/user-avatar.png" alt="">
                             <i class="fas fa-angle-right fa-3x" ></i>
-                            <img class="rounded-circle" src="img/user-avatar-color.jpg" alt="">
+                            <img class="rounded-circle" src="img/user_color.png" alt="">
                         </div>
                         <p>Nie bądź szarakiem!<br>Zarejestruj się w aplikacji aby uzyskać dostęp ukrytych pereł kulinarnego świata i innych osób, które z praktycznie niczego robią coś dobrego!</p>
                         <a href="<?php echo ROOT_URL; ?>search.php" class="btn btn-danger btn-block btn-lg">Zacznij teraz</a>
