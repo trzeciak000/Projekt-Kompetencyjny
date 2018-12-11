@@ -25,7 +25,6 @@ $(document).ready(function(){
 		</script>
 	</head>
 	<body>
-		<h1>Narzędzie Administratorskie</h1>
 		<form action="proces_wstaw_przepis.php" method="post" enctype="multipart/form-data">
 			Zdjęcie: <input type="file" name="obraz" accept="image/*">
 			<table>
@@ -49,14 +48,14 @@ $(document).ready(function(){
 			<input id="iloscSkladnikow" type="number" name="ilosc_skladnikow" value="1" hidden>
 			<input type="submit" value="submit">
 		</form>
-		<h5>
-		LOG:
-		</h5>
 		<p>
-		<?php if( count($_GET) > 0 ){ echo $_GET['text1']; }?>
+		<?php
+		#dane LOGa. użyć przy testowaniu
+		if( count($_GET) > 0 ){ echo $_GET['niepowodzenie']; }?>
 		</p>
 		<p>
-		<?php if( count($_GET) > 0 ){ echo $_GET['text2']; }?>
+		<?php
+		if( count($_GET) > 0 ){ echo $_GET['powodzenie']; }?>
 		</p>
 	</body>
 </html>

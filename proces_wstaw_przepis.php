@@ -53,8 +53,8 @@ function id_kategorii_o_nazwie($nazwa, $conn)
 //---------------------------------------------------------------------------------------------------------------------------------------------
 //Połączenie z bazą danych
 
-$text1 = '';
-$text2 = '';
+$powodzenie = '';
+$niepowodzenie = '';
 $conn = mysqli_connect( DB_HOST, DB_USER, DB_PASS, DB_NAME);
 $conn->query("SET CHARSET utf8");
 if (!$conn) {
@@ -86,18 +86,18 @@ if( $id_kategorii == 'e0' )
 	$sql = "INSERT INTO kategorie (kategoria) VALUES ( '$kategoria' )";
 	if( mysqli_query( $conn, $sql ) )
 	{
-		$text1 = $text1 . "<br>kategoria {$kategoria} dodana pomyślnie";
+		$powodzenie = $powodzenie . "<br>kategoria {$kategoria} dodana pomyślnie";
 		$id_kategorii = id_kategorii_o_nazwie($kategoria, $conn);
 	}
 	else
 	{
-		$text1 = $text1 . "<br>kategoria {$kategoria} nie dodana.";
+		$niepowodzenie = $niepowodzenie . "<br>kategoria {$kategoria} nie dodana.";
 		$exit = 1;
 	}
 }
 else if( $id_kategorii == 'e1' )
 {
-	$text1 = $text1 . "<br>wiele kategorii o nazwie {$kategoria}.";
+	$niepowodzenie = $niepowodzenie . "<br>wiele kategorii o nazwie {$kategoria}.";
 	$exit = 1;
 }
 
@@ -107,7 +107,7 @@ else if( $id_kategorii == 'e1' )
 $sql = "INSERT INTO przepisy (Nazwa, Przygotowanie, Opis, CzasPrzygotowania, IloscPorcji, Zrodlo, id_kategorii) VALUES ( '$nazwa', '$przygotowanie', '$opis', '$czas_przygotowania', $ilosc_porcji, '$zrodlo', $id_kategorii )";
 if( ($exit == 0) && mysqli_query( $conn, $sql ) )
 {
-	$text1 = 'Przepis dodany pomyślnie';
+	$powodzenie = $powodzenie . '<br>Przepis dodany pomyślnie';
 	
 	//uzyskanie id wprowadzonego przepisu poprzez jego nazwe i żródło
 	$sql = "SELECT IDPrzepisu FROM przepisy WHERE Nazwa='$nazwa' AND Zrodlo='$zrodlo'";
@@ -145,87 +145,85 @@ if( ($exit == 0) && mysqli_query( $conn, $sql ) )
 			{
 				$sql = "INSERT INTO skladniki (Nazwa) VALUES ( '$skladnik' )";
 				if( mysqli_query( $conn, $sql ) )
-					$text1 = $text1 . "<br>Składnik {$skladnik} dodany pomyślnie";
+					$powodzenie = $powodzenie . "<br>Składnik {$skladnik} dodany pomyślnie";
 				
 				$id_skladnika = id_skladnika_o_nazwie( $skladnik, $conn );
 				if( $id_skladnika == 'e0' )
 				{
-					$text1 = $text1 . "<br>Dodanie skladnika o nazwie {$skladnik} zakończone niepowodzeniem.";
+					$niepowodzenie = $niepowodzenie . "<br>Dodanie skladnika o nazwie {$skladnik} zakończone niepowodzeniem.";
 					continue;
 				}
 				else if( $id_skladnika == 'e1' )
 				{
-					$text1 = $text1 . "<br>Teraz mamy wiele składników o nazwie {$skladnik}. Obecne wersje algorytmów niedopuszczają tego.";
+					$niepowodzenie = $niepowodzenie . "<br>Teraz mamy wiele składników o nazwie {$skladnik}. Obecne wersje algorytmów niedopuszczają tego.";
 					continue;
 				}
 			}
 			else if($id_skladnika == 'e1')
 			{
-				$text1 = $text1 . "<br>Istnieje wiele składników o nazwie {$skladnik}. Obecne wersje algorytmów niedopuszczają tego. Składnik niedodany.";
+				$niepowodzenie = $niepowodzenie . "<br>Istnieje wiele składników o nazwie {$skladnik}. Obecne wersje algorytmów niedopuszczają tego. Składnik niedodany.";
 				continue;
 			}
 			//wprowadzenie skłądnika jako składnik przepisu
 			$sql = "INSERT INTO skladniki_przepisow (IDPrzepisu, IDSkladnika, Jednostka, Ilosc) VALUES ( $id_przepisu, $id_skladnika, '$jednostka', $ilosc)";
 			if( mysqli_query( $conn, $sql ) )
 			{
-				$text1 = $text1 . "<br>Składnik {$skladnik} dodany pomyślnie jako składnik przepisu.";
+				$powodzenie = $powodzenie . "<br>Składnik {$skladnik} dodany pomyślnie jako składnik przepisu.";
 				$faktyczna_ilosc_dodanych_skladnikow++;
 			}
 			else
-				$text1 = $text1 . "<br>Próba dodania składnika {$skladnik} jako składnik przepisu zakończona niepowodzeniem.<br>$sql";
+				$niepowodzenie = $niepowodzenie . "<br>Próba dodania składnika {$skladnik} jako składnik przepisu zakończona niepowodzeniem.<br>$sql";
 		}
 		//zaktualizowanie 
 		if($faktyczna_ilosc_dodanych_skladnikow > 0)
 		{
 			$sql = "UPDATE Przepisy SET IloscRodzajowSkladnikow = $faktyczna_ilosc_dodanych_skladnikow WHERE IDPrzepisu={$id_przepisu}";
 			if( mysqli_query( $conn, $sql ) )
-				$text1 = $text1 . "<br>Przepis zaktualizowany o ilość rodzajów składników: $faktyczna_ilosc_dodanych_skladnikow";
+				$powodzenie = $powodzenie . "<br>Przepis zaktualizowany o ilość rodzajów składników: $faktyczna_ilosc_dodanych_skladnikow";
 			else
-				$text1 = $text1 . "<br>Aktualizacja przepisu o ilość rodzajów składników zakończona niepowodzeniem.";
+				$niepowodzenie = $niepowodzenie . "<br>Aktualizacja przepisu o ilość rodzajów składników zakończona niepowodzeniem.";
 		}
 //---------------------------------------------------------------------------------------------------------------------------------------------
 		//obraz upload
-		$folder_docelowy = '/img/przepisy/';
+		$folder_docelowy = 'img/przepisy/';
 		$nazwa_pliku = 'przepis_' . $id_przepisu . '_' . $_FILES['obraz']['name'];
 		$sciezka = $folder_docelowy . $nazwa_pliku;
 		if (move_uploaded_file($_FILES['obraz']['tmp_name'], $sciezka))
 		{
-			$text1 = $text1 . "<br>Obraz zuploadowany pomyślnie";
+			$powodzenie = $powodzenie . "<br>Obraz zuploadowany pomyślnie";
 			//wprowadzenie linku obrazu do bazy danych
 			$sql = "INSERT INTO obrazy_przepisy (IDPrzepisu, Link) VALUES ( $id_przepisu, '$nazwa_pliku' )";
 			if( mysqli_query( $conn, $sql ) )
 			{
-				$text1 = $text1 . "<br>Link do obrazu pomyślnie zapisany";
+				$powodzenie = $powodzenie . "<br>Link do obrazu pomyślnie zapisany";
 			}
 			else
 			{
-				$text1 = $text1 . "<br>Link do obrazu niezapisany";
+				$niepowodzenie = $niepowodzenie . "<br>Link do obrazu niezapisany";
 				if( unlink($sciezka) )
 				{
-					$text1 = $text1 . "<br>Obraz skasowany";
+					$powodzenie = $powodzenie . "<br>Obraz skasowany";
 				}
 				else
 				{
-					$text1 = $text1 . "<br>Pruba skasowania obrazu niepowiodła się";
+					$niepowodzenie = $niepowodzenie . "<br>Pruba skasowania obrazu niepowiodła się";
 				}
 			}
 		}
 		else
 		{ 
-			$text1 = $text1 . "<br>Upload się nie powiódł";
-			$text1 = $text1 . "<br>" . $sciezka . "<br>" . $_FILES['obraz']['tmp_name'];
-			$text1 = $text1 . "<br>" . $_FILES['obraz']['error'];
+			$niepowodzenie = $niepowodzenie . "<br>Upload się nie powiódł";
 		}
 	}
 	else
-		$text1 = $text1 . " ale okazuje się że istnieje podobny z tego samego zródła. Składniki niedodane.";
+		$niepowodzenie = $niepowodzenie . "Okazuje się że istnieje podobny z tego samego zródła. Składniki niedodane.";
 }
 else
-	$text1 = 'Przepis nie dodany pomyślnie<br>' . $sql;
+	$niepowodzenie = $niepowodzenie . '<br>Przepis nie dodany pomyślnie<br>' . $sql;
 
 $get = array (
-	'text1' => $text1,
-	'text2' => $text2
+	'powodzenie' => $powodzenie,
+	'niepowodzenie' => $niepowodzenie
 );
 header( 'Location: wstaw_przepis.php?' . http_build_query($get),true,303);
 exit();
