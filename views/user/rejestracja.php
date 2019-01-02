@@ -32,7 +32,7 @@
                         </div>
     
                         <div class="form-group">
-                            <input name="password" type="password2" class="form-control" placeholder="Powtórz hasło">
+                            <input name="password2" type="password" class="form-control" placeholder="Powtórz hasło">
                         </div>
     
                         <button name="submit" type="submit" class="btn btn-outline-dark btn-block mb-4">Zarejestruj</button>
@@ -43,7 +43,8 @@
                         Rejestrując się akceptujesz <a class="text-info" href="">Regulamin</a>
                     </p>
                     <?php else : ?>
-                        Jesteś aktualnie zalogowany.
+                        Jesteś aktualnie zalogowany.<br />
+                        <a href="<?php echo ROOT_URL; ?>">Powrót do strony głównej.</a>
                         <form method="post" action="logout.php">
                             <input type="submit" name="submit" value="Wyloguj">
                         </form>

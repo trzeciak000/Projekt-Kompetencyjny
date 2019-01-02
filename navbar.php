@@ -3,20 +3,20 @@
 ?>
 <nav class="navbar navbar-light bg-white" id="main-navbar">
     
-    <?php /*if(isset($_SESSION['zalogowany'])) : */?>
+    <?php if(isset($_SESSION['zalogowany'])) : ?>
     
     <div class="dropdown show">
         <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img class="rounded-circle user-img" src="img/meal_icon.png" alt="username"> <!--tutaj zdjecie usera-->
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <span class="dropdown-item text-secondary">username<?php /*echo $_SESSION['dane_usera']['login'];*/?></span>
-            <a class="dropdown-item" href="#">Moje konto</a>
+            <span class="dropdown-item text-secondary"><?php echo $_SESSION['dane_usera']['login'];?></span>
+            <a class="dropdown-item" href="<?php echo ROOT_URL; ?>views/user/account.php">Moje konto</a>
             <a class="dropdown-item" href="<?php echo ROOT_URL; ?>views/user/logout.php">Wyloguj</a>
         </div>
     </div>
     
-    <?/*php endif;*/ ?>
+    <?php endif; ?>
     
     <a class="navbar-brand" href="<?php echo ROOT_PATH; ?>">What2Eat</a>
     

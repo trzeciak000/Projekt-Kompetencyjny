@@ -102,6 +102,7 @@
                             <i class="far fa-clock"></i> <?php echo $przepis['CzasPrzygotowania']; ?>
                         </p>
                     </div>
+                    <a class="btn btn-info" href="przepis.php?id=<?php echo $przepis['IDPrzepisu']; ?>">Przejdź</a>
                 </div>
                 <?php endforeach; ?>
             </div>

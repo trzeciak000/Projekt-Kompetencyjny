@@ -14,14 +14,15 @@ if (isset($_POST['submit'])) {
     $haslo = filtruj($_POST['password']);
     if ($login != "" && $haslo != "") {
         if (mysqli_num_rows(mysqli_query($connect, "SELECT Nazwa, Haslo FROM uzytkownicy WHERE Nazwa = '".$login."' AND Haslo = '".md5($haslo)."';")) > 0) {
-            $sql = "SELECT IDUzytkownika, Nazwa, role_id FROM uzytkownicy WHERE Nazwa='" . $login . "';";
+            $sql = "SELECT IDUzytkownika, Nazwa, role_id, Haslo FROM uzytkownicy WHERE Nazwa='" . $login . "';";
             $result = $connect->query($sql)->fetch_assoc();
             var_dump($result);
             $_SESSION['zalogowany'] = true;
             $_SESSION['dane_usera'] = array(
                 "id" => $result['IDUzytkownika'],
                 "login" => $result['Nazwa'],
-                "role_id" => $result['role_id']
+                "role_id" => $result['role_id'],
+                "password" => $result['Haslo']
             );
             header("Location: logowanie.php");
         }
@@ -68,7 +69,8 @@ if (isset($_POST['submit'])) {
                         
                     </p>
                     <?php else : ?>
-                        Jesteś aktualnie zalogowany.
+                        Jesteś aktualnie zalogowany.<br />
+                        <a href="<?php echo ROOT_URL; ?>">Powrót do strony głównej.</a>
                         <form method="post" action="logout.php">
                             <input type="submit" name="submit" value="Wyloguj">
                         </form>
