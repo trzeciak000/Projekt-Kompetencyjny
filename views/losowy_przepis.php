@@ -1,6 +1,6 @@
 <?php
     include "../config.php";
-    include "../main_panel.php";
+    include "../navbar.php";
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     $conn->query("SET CHARSET utf8");
     $sql = "SELECT * FROM przepisy WHERE visible=1;";
@@ -57,9 +57,9 @@
 
     <!-- JavaScript -->
     <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/custom.js"></script>
-    <script src="../js/all.min.js"></script>
-  </body>
+<script src="../js/popper.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/custom.js"></script>
+<script src="../js/all.min.js"></script>
+</body>
 </html>
