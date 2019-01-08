@@ -3,16 +3,16 @@
 include 'config.php';
 mb_internal_encoding('UTF-8');
 //---------------------------------------------------------------------------------------------------------------------------------------------
-function string_obrobka($str)
+function string_obrobka($str, $conn)
 {
-	$str = mysql_real_escape_string($str);
+	$str = mysqli_real_escape_string($str, $conn);
 	return $str;
 }
 
-function string_obrobka_case_insensitive($str)
+function string_obrobka_case_insensitive($str, $conn)
 {
 	$str = mb_strtolower($str);
-	$str = mysql_real_escape_string($str);
+	$str = mysqli_real_escape_string($str, $conn);
 	return $str;
 }
 
