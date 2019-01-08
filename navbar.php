@@ -26,7 +26,7 @@
     
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="<?php echo ROOT_URL; ?>searchsite.php">Znajdź przepis</a></li>
+            <li class="nav-item"><a class="nav-link" href="<?php echo ROOT_URL; ?>search.php">Znajdź przepis</a></li>
             <hr>
             <li class="nav item"><a class="nav-link" href="<?php echo ROOT_URL; ?>views/listall.php">Wsystkie przepisy</a></li>
             <hr>
