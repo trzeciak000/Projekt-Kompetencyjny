@@ -15,11 +15,11 @@
 <!doctype html>
 <html lang="pl">
 
-<?php include LAYOUT_PATH.'head.php' ?>
+<?php include LAYOUT_PATH.'head.php'; ?>
 
 <body>
 
-<?php include LAYOUT_PATH.'navbar.php' ?>
+<?php include LAYOUT_PATH.'navbar.php'; ?>
 
 <!-- Hero section -->
 <section class="page-top-section set-bg" data-setbg="img/page-top-bg.jpg">
