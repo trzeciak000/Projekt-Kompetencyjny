@@ -1,14 +1,15 @@
-<?php session_start(); ?>
+<?php 
+    session_start();
+    include '../config.php';
+?>
+
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>What2Eat | Przepisy</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/custom.css">
-</head>
+
+<?php include '../layout/head.php' ?>
+
 <body>
+<?php include '../layout/navbar.php' ?>
 <!--<form method="post" action="listall.php">-->
 <!--    <label>Zobacz wg kategorii: </label>-->
 <!--    <select name="category">-->
@@ -66,13 +67,10 @@
         </div>
     </div>
     
-    <!-- JavaScript -->
-    <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/all.min.js"></script>
-    <script src="../js/custom.js"></script>
-	<script>
+    <?php include '../layout/footer.php' ?>
+    <?php include '../layout/scripts.php' ?>
+    
+    <script>
 	function wszystkiePrzepisyCall() {
 		var call = []
 		call[0] = "wszystkie_przepisy.php"
