@@ -1,6 +1,12 @@
 <?php
 session_start();
 require "../../config.php";
+
+if(isset($_SESSION['zalogowany'])){
+    $_SESSION['errMsg'] = "Jesteś już zalogowany!";
+    header("Location: ".ROOT_URL);
+}
+
 $connect = mysqli_connect(DB_HOST,DB_USER,DB_PASS, DB_NAME);
 $connect->query("SET CHARSET utf8");
 
@@ -24,7 +30,7 @@ if (isset($_POST['submit'])) {
                 "role_id" => $result['role_id'],
                 "password" => $result['Haslo']
             );
-            header("Location: logowanie.php");
+            header("Location: ".ROOT_URL);
         }
         else echo "Wpisano złe dane.";
     } else {
