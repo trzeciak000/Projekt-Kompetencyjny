@@ -2,95 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50c75bb1-4045-48ba-a2b4-3dba853a40f3" name="Default Changelist" comment="problem merge">
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Amelki-placuszki-serowe-z-borówkami.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Amerykańskie-naleśniki.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Bagietka-capresse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Bananowe_pancakes.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Chrupiące-tosty-z-ricottą-i-śliwkami-z-tymiankiem.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Cynamonowe-tosty-z-chałki.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Czekoladowe-naleśnik-z-bananami.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Francuskie-tosty-z-boczkiem-i-serem.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Francuskie-tosty-z-karmelizowanymi-jabłkami.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Jajka-faszerowane-oliwkami-i-suszonymi-pomidorami .png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Jajka-faszerowane-z-szynką.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Jajka-po-benedyktyńsku.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Jajka-w-kokilkach.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Jajka-z-blaszki.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Kanapka-z-grilla-z-serem-i-pomidorem.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Kanapka-z-kurczakiem-majonezem-awokado-i-jabłkiem.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Marchwiowe-placuszki-z-sosem-serowym.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Naleśnik-z-kremem-z-rabarbaru.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Naleśniki-à-la-Raffaello.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Omlet-z-amarantusem-i-owocami.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Puszyste-racuszki-z-jabłkami-i-twarożkiem.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Serowe-placuszki-z-sosem-malinowym.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Smażone-tramezzini-caprese.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Szakszuka.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Szybkie-tosty-z-grzybami.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Tortilla-z-jajkiem-i-bekonem.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Tostowe-koszyczki-z-pieczarkami-boczkiem-i-jajkiem.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Tosty-francuskie-z-bananami.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Tosty-z-gruszkami-i-serem.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Trzypoziomowe-tosty.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/Zapiekane-tosty-z-pieczonym-kalafiorem-i-pastą-z-papryki.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/burgery_z_kurczaka.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/cassolette_z_lososiem_i_ziemniakami.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/chipsy-naturalne.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/filety_drobiowe_w_sosie_z_gorgonzoli_01.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/filety_drobiowe_z_cukinia_01.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/filety_drobiowe_z_soczewica_dynia.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/garnek_z_parowkami_chilli.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/gulasz_z_parowek.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/gyros_propozycja.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/jajko_na_twardo_w_ksztalcie_serca.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/klops_z_jajkiem.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/knorr-udko-chrupiace.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/kotlety-mielone-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/kurczak-w-sosie-smietanowo-ziolowym.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/kurczak_w_sosie_koperkowym_01.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/kurczak_z_pieczarkami_szpinakiem.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/losos_caprese_z_pesto_02.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/makaron_wolowina_fasolka_01_0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/makaron_z_krewetkami_pomidorami_01.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/makaron_z_kurczakiem_i_szparagami.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/makaron_z_kurczakiem_w_sosie_smietanowym.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/makaron_z_lososiem_szpinakiem_suszonymi_pomidorami.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/makaron_z_truskawkami.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/makaron_z_tunczykiem_oliwkami.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/makaron_z_warzywami.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/mieso_do_burgerow.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/muszelki_z_papryka_i_parowkami.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/nalesniki-z-szynka-i-pieczarkami.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/parmigiana_z_kurczaka.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/parowki_po_kanadyjsku.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/parowki_w_ciescie.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/penne_z_cukinia.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/pieczarkowa.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/pieczona-karkowka-w-kruszonym-pieprzu-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/pieczone-udka-z-kurczaka.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/pizza_z_tortilli.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/poledwiczki-a-la-gyros.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/pomidorowa_z_makaronem.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/salatka-grecka-z-feta.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/salatka_z_biala_kielbasa_i_jajkami.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/salatka_z_kalafiora_z_jajkiem.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/salatka_z_karmelizowanymi_rzodkiewkami.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/salatka_z_karmelizowanymi_rzodkiewkami1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/salatka_z_pitaja.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/schab-w-kremowym-sosie.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/spaghetti-cztery-sery.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/spaghetti_po_bolonsku.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/spaghetti_z_sosem_szynka_i_rukola.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/szaszlyki_zawijane_z_parowek.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/szpinak_z_jajkiem.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/tortilla.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/wieprzowina_po_chinsku_z_ananasem.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/ziemniaczana_zapiekanka_z_kurczakiem.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/przepisy/zupa_ogorkowa_01.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/proces_search.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/navbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proces_wstaw_przepis.php" beforeDir="false" afterPath="$PROJECT_DIR$/proces_wstaw_przepis.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../php_shareboard_project/classes/Bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/../php_shareboard_project/classes/Bootstrap.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../php_shareboard_project/models/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/../php_shareboard_project/models/admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../php_shareboard_project/views/Admin/manageshares.php" beforeDir="false" afterPath="$PROJECT_DIR$/../php_shareboard_project/views/Admin/manageshares.php" afterDir="false" />
@@ -144,7 +56,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/navbar.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
@@ -153,10 +65,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/search.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2604" />
+            <state relative-caret-position="2975">
+              <caret line="175" column="53" lean-forward="true" selection-start-line="175" selection-start-column="53" selection-end-line="175" selection-end-column="53" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -365,7 +279,7 @@
       <workItem from="1546892569604" duration="1197000" />
       <workItem from="1546976422067" duration="130000" />
       <workItem from="1546976678387" duration="4183000" />
-      <workItem from="1546993654965" duration="338000" />
+      <workItem from="1546993654965" duration="1160000" />
     </task>
     <task id="LOCAL-00001" summary="dodana struktura dla zdjec">
       <created>1543833487316</created>
@@ -444,15 +358,28 @@
       <option name="project" value="LOCAL" />
       <updated>1546977812038</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="problem merge">
+      <created>1546994131617</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1546994131617</updated>
+    </task>
+    <task id="LOCAL-00013" summary="problem merge">
+      <created>1546994217563</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1546994217563</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63111000" />
+    <option name="totallyTimeSpent" value="63933000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49918166" visible="true" weight="0.30332828" />
       <window_info id="Structure" order="1" sideWeight="0.5008183" side_tool="true" weight="0.25340393" />
@@ -794,16 +721,18 @@
         <state relative-caret-position="-117" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2975">
+          <caret line="175" column="53" lean-forward="true" selection-start-line="175" selection-start-column="53" selection-end-line="175" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/navbar.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="62" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/search.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2604" />
       </provider>
     </entry>
   </component>
