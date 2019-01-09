@@ -32,7 +32,7 @@
                             <div class="col-md-5">
                                 <select name="pokaz" id="pokazSelect" type="text" class="form-control"
 								<?php if( !isset($_SESSION['dane_usera']['id']) )
-										echo 'disabled'
+										echo 'disabled';
 								?>>
                                     <option value="0">Wszystkie</option>
                                     <option value="1">Dające się zrealizować</option>
