@@ -41,15 +41,8 @@ if (isset($_POST['submit'])) {
 
 <!DOCTYPE html>
 <html>
-<head>
-    <!-- meta -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>What2Eat | Logowanie</title>
-    
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/custom.css">
-</head>
+
+<?php include '../../layout/head.php'; ?>
 
 <body>
     <div class="fullscreen d-flex align-items-center" style="background:url('../../img/food_bg_blurred.jpg') no-repeat fixed center; background-size: cover;">
@@ -71,7 +64,7 @@ if (isset($_POST['submit'])) {
                     </form>
                     
                     <p class="text-secondary mb-4">
-                        Nie masz konta? <a class="text-info" href="<?php echo ROOT_PATH; ?>views/user/rejestracja.php">Zarejestruj się</a><br>
+                        Nie masz konta? <a class="text-info" href="<?php echo ROOT_URL; ?>views/user/rejestracja.php">Zarejestruj się</a><br>
                         
                     </p>
                     <?php else : ?>
@@ -88,11 +81,6 @@ if (isset($_POST['submit'])) {
 
 
 
-    <!-- JavaScript -->
-    <script src="../../js/jquery-3.3.1.min.js"></script>
-    <script src="../../js/popper.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/all.min.js"></script>
-    <script src="../../js/custom.js"></script>
+    <?php include '../../layout/scripts.php' ?>
 </body>
 </html>

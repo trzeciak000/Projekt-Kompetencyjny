@@ -5,7 +5,7 @@
     define("DB_NAME", "what2eat");
     
     define("ROOT_URL", "http://localhost/Projekt-Kompetencyjny/");
-    define("ROOT_PATH", realpath("/Projekt-Kompetencyjny/"));
+    define("ROOT_PATH", "/Projekt-Kompetencyjny/");
     define("LAYOUT_PATH", ROOT_PATH . "layout/");
     define("CSS_PATH", ROOT_PATH . "css/");
     define("JS_PATH", ROOT_PATH . "js/");

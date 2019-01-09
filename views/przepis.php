@@ -37,7 +37,7 @@
 
 <?php include '../layout/navbar.php'; ?>
 
-<section class="page-top-section set-bg" style="background-image: url(<?php echo ROOT_URL; ?>img/page-top-bg.jpg)">
+<section class="page-top-section set-bg" style="background-image: url(<?php echo ROOT_URL; ?>img/page-top-bg.jpg);">
 	<div class="container">
 		<h2>Przepis</h2>
 	</div>
