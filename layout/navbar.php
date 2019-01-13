@@ -33,7 +33,7 @@
 				<li><a href="<?php echo ROOT_URL; ?>">Główna</a></li>
 				<li><a href="<?php echo ROOT_URL; ?>views/listall.php">Wszyskie</a></li>
 				<li><a href="<?php echo ROOT_URL; ?>views/listall.php">Wyszukaj</a></li>
-				<li><a href="<?php echo ROOT_URL; ?>przepis.php?id=0">Losowy</a></li>
+				<li><a href="<?php echo ROOT_URL; ?>views/przepis.php?id=0">Losowy</a></li>
 			</ul>
 		</div>
 	</div>
