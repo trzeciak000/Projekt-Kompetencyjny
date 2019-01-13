@@ -103,7 +103,7 @@ ol {
 	font-weight: 700;
 }
 
-.set-bg {
+.setbg {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top center;
@@ -562,6 +562,11 @@ ol {
 .recipe {
 	position: relative;
 	margin-bottom: 30px;
+}
+
+.recipe .recipe-image {
+	height: 260px;
+	width: 100%;
 }
 
 .recipe .recipe-info-warp {
