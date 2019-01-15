@@ -26,9 +26,7 @@
 			<div class="nav-switch">
 				<i class="fa fa-bars"></i>
 			</div>
-			<div class="header-search">
-				<a href="#"><i class="fa fa-search"></i></a>
-			</div>
+			
 			<ul class="main-menu">
 				<li><a href="<?php echo ROOT_URL; ?>">Główna</a></li>
 				<li><a href="<?php echo ROOT_URL; ?>views/listall.php">Wszyskie</a></li>
@@ -36,6 +34,7 @@
 				<li><a href="<?php echo ROOT_URL; ?>views/przepis.php?id=0">Losowy</a></li>
 				<?php if(isset($_SESSION['zalogowany'])) : ?>
 				<li><a href="<?php echo ROOT_URL; ?>search.php">Lodówka</a></li>
+				<li><a href="<?php echo ROOT_URL; ?>wstaw_przepis.php">Dodaj przepis</a></li>
 				<?php endif; ?>
 			</ul>
 		</div>
