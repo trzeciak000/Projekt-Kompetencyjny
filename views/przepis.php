@@ -1,4 +1,5 @@
 <?php
+	session_start();
     include "../config.php";
 
 	$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -56,13 +57,17 @@
 				</div>
 				<h2><?php echo $przepis['Nazwa']; ?></h2>
 				<div class="recipe-date">14 Stycznia, 2019</div>
-				<!--<div class="rating">
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star is-fade"></i>
-				</div>-->
+				<div class="rating">
+					<?php 
+					for ($i = 1; $i <= 5; $i++) {
+						if ($i <= intval($przepis['ocena'])) {
+							echo '<i class="fa fa-star"> </i>';
+						} else {
+							echo '<i class="fa fa-star is-fade"> </i>';
+						}
+					}
+					?>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-5">

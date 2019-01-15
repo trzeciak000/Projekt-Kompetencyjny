@@ -12,9 +12,14 @@ include 'Flash.php';
 		include 'layout/navbar.php'; 
 		Flash::display();
 	?>
+	<section class="page-top-section setbg" style="background-image: url(<?php echo ROOT_URL; ?>img/page-top-bg.jpg);">
+		<div class="container">
+			<h2>Dodaj przepis</h2>
+		</div>
+	</section>
+
 	<div class="wrapper setbg py-5" style="background-image:url(img/slider-bg-1.jpg);">
 	<div class="container p-4 bg-pink">
-		<h2 class="text-light text-center mb-5">Dodaj przepis</h2>
 		<form action="proces_wstaw_przepis.php" method="post" enctype="multipart/form-data">
 			<div class="custom-file mb-3">
   				<input type="file" class="custom-file-input" id="customFile" name="obraz" accept="image/*">
@@ -65,7 +70,7 @@ include 'Flash.php';
     			</div>
 			</div>
 			<div class="form-group" id="wierszDodajButtona">
-				<input class="btn btn-block btn-dark" type="button" id="dodajButton" value="+">
+				<input class="btn btn-block btn-light" type="button" id="dodajButton" value="+">
 			</div>
 			<div class="form-group row">
     			<label class="col-sm-2 col-form-label font-weight-bold text-light">Przygotowanie:</label>
