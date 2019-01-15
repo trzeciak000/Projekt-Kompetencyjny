@@ -5,10 +5,9 @@
 
 <!DOCTYPE html>
 <html>
-
 <?php include '../layout/head.php' ?>
-
 <body>
+<<<<<<< HEAD
 <?php include '../layout/navbar.php' ?>
 <!--<form method="post" action="listall.php">-->
 <!--    <label>Zobacz wg kategorii: </label>-->
@@ -61,15 +60,63 @@
                     </form>
                 </div>
             </div>
+=======
+    <?php include '../layout/navbar.php' ?>
 
-            <div class="card-columns" id="przepisy">
-            </div>
-        </div>
-    </div>
-    
-    <?php include '../layout/footer.php' ?>
-    <?php include '../layout/scripts.php' ?>
-    
+
+	<!-- Hero section -->
+	<section class="page-top-section setbg" style="background-image: url(<?php echo ROOT_URL.'img/page-top-bg.jpg' ?>);">
+		<div class="container">
+			<h2>Przepis</h2>
+		</div>
+	</section>
+	<!-- Hero section end -->
+
+>>>>>>> gui
+
+	<!-- Search section -->
+	<div class="search-form-section">
+		<div class="sf-warp">
+			<div class="container">
+				<form class="big-search-form"  method="post" action="listall.php">
+					<select name="pokaz" id="pokazSelect" type="text">
+                        <option value="0">Wszystkie</option>
+                        <option value="1">Dające się zrealizować</option>
+					</select>
+					<select name="sortowanie" id="sortSelect" type="text">
+                        <option value="0">Nazwa A-Z</option>
+                        <option value="1">Nazwa Z-A</option>
+                        <option value="2">Czas rosnąco</option>
+                        <option value="3">Czas malejąco</option>
+					</select>
+					<input type="text" placeholder="Search Receipies">
+					<button class="bsf-btn" name="sortuj" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Search section end -->
+
+
+	<!-- Recipes section -->
+	<section class="recipes-page spad">
+		<div class="container">
+			<div class="row" id="przepisy">
+				<!-- tutaj laduja przepisy -->
+			</div>
+			<div class="site-pagination">
+				<span>01</span>
+				<a href="#">02</a>
+				<a href="#">03</a>
+			</div>
+		</div>
+	</section>
+	<!-- Recipes section end -->
+
+    <?php 
+        include '../layout/footer.php'; 
+        include '../layout/scripts.php'
+    ?>
     <script>
 	function wszystkiePrzepisyCall() {
 		var call = []
@@ -92,4 +139,5 @@
 	});
 	</script>
 </body>
-</html>
+
+                

@@ -1,10 +1,12 @@
 <?php
 session_start();
 require "../../config.php";
+include "../../Flash.php";
 
 if(isset($_SESSION['zalogowany'])){
-    $_SESSION['errMsg'] = "Jesteś już zalogowany!";
+    Flash::setMessage("Jesteś już zalogowany!", 'info');
     header("Location: ".ROOT_URL);
+    exit();
 }
 
 $connect = mysqli_connect(DB_HOST,DB_USER,DB_PASS, DB_NAME);
@@ -12,7 +14,7 @@ $connect->query("SET CHARSET utf8");
 
 function filtruj($zmienna) {
     if(get_magic_quotes_gpc()) $zmienna = stripslashes($zmienna);
-    return mysqli_real_escape_string(mysqli_connect(DB_HOST,DB_USER,DB_PASS), htmlspecialchars(trim($zmienna)));
+        return mysqli_real_escape_string(mysqli_connect(DB_HOST,DB_USER,DB_PASS), htmlspecialchars(trim($zmienna)));
 }
 
 if (isset($_POST['submit'])) {
@@ -31,56 +33,42 @@ if (isset($_POST['submit'])) {
                 "password" => $result['Haslo']
             );
             header("Location: ".ROOT_URL);
+            exit();
         }
-        else echo "Wpisano złe dane.";
+        else Flash::setMessage("Wpisano błędne dane!", 'error');
     } else {
-        echo "Uzupełnij wszystkie pola.";
+        Flash::setMessage("Uzupełnij wszystkie pola!", 'error');
     }
 }
 ?>
 
 <!DOCTYPE html>
 <html>
-<head>
-    <!-- meta -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>What2Eat | Logowanie</title>
-    
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/custom.css">
-</head>
+
+<?php include '../../layout/head.php'; ?>
 
 <body>
-    <div class="fullscreen d-flex align-items-center" style="background:url('../../img/food_bg_blurred.jpg') no-repeat fixed center; background-size: cover;">
+    <?php Flash::display(); ?>
+    <div class="fullscreen d-flex align-items-center" style="background:url('../../img/slider-bg-1.jpg') no-repeat fixed center; background-size: cover;">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-lg-4 m-auto text-center bg-light">
-                    <?php if ( !isset($_SESSION['zalogowany'])) : ?>
-                    <h4 class="text-dark my-4">Zaloguj się</h4>
+                <div class="col-md-6 col-lg-4 m-auto text-center bg-pink">
+                    <h2 class="text-light my-4">Zaloguj się</h2>
                     <form method="post" action="logowanie.php">
                         <div class="form-group">
-                            <input name="name" type="text" class="form-control" placeholder="Nazwa użytkownika">
+                            <input name="name" type="text" class="form-control form-control-lg" placeholder="Nazwa użytkownika">
                         </div>
     
                         <div class="form-group">
-                            <input name="password" type="password" class="form-control" placeholder="Hasło">
+                            <input name="password" type="password" class="form-control form-control-lg" placeholder="Hasło">
                         </div>
     
-                        <button name="submit" type="submit" class="btn btn-outline-dark btn-block mb-4">Zaloguj</button>
+                        <button name="submit" type="submit" class="btn btn-dark btn-block btn-lg mb-4">Zaloguj</button>
                     </form>
                     
-                    <p class="text-secondary mb-4">
-                        Nie masz konta? <a class="text-info" href="<?php echo ROOT_PATH; ?>views/user/rejestracja.php">Zarejestruj się</a><br>
-                        
+                    <p class="text-light font-weight-bold mb-4">
+                        Nie masz konta? <a class="text-dark " href="<?php echo ROOT_URL; ?>views/user/rejestracja.php">Zarejestruj się</a><br>
                     </p>
-                    <?php else : ?>
-                        Jesteś aktualnie zalogowany.<br />
-                        <a href="<?php echo ROOT_URL; ?>">Powrót do strony głównej.</a>
-                        <form method="post" action="logout.php">
-                            <input type="submit" name="submit" value="Wyloguj">
-                        </form>
-                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -88,11 +76,6 @@ if (isset($_POST['submit'])) {
 
 
 
-    <!-- JavaScript -->
-    <script src="../../js/jquery-3.3.1.min.js"></script>
-    <script src="../../js/popper.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/all.min.js"></script>
-    <script src="../../js/custom.js"></script>
+    <?php include '../../layout/scripts.php' ?>
 </body>
 </html>
