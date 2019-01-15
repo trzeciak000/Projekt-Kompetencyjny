@@ -1,20 +1,13 @@
 <?php
     include '../../config.php';
-    include '../../navbar.php';
+    include '../../Flash.php';
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <!-- meta -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>What2Eat</title>
-
-        <!-- CSS -->
-        <link rel="stylesheet" href="../../css/bootstrap.min.css">
-        <link rel="stylesheet" href="../../css/custom.css">
-    </head>
+<?php include '../../layout/head.php'; ?>
     <body>
+    <?php include '../../layout/navbar.php'; ?>
+    <?php Flash::display(); ?>
         <div class="fullscreen">
             <br />
             <a class="btn btn-secondary" href="account.php">Powrót</a><br /><br />
@@ -35,18 +28,10 @@
             </form>
         </div>
 
-        <!-- JavaScripts -->
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/all.min.js"></script>
-        <script src="js/custom.js"></script>
-        <script src="js/offcanvas.js"></script>
+        <?php include '../../layout/scripts.php'; ?>
     </body>
 </html>
 <?php
-include '../../config.php';
-include '../../navbar.php';
 $connect = mysqli_connect(DB_HOST,DB_USER,DB_PASS, DB_NAME);
 $connect->query("SET CHARSET utf8");
 
@@ -65,15 +50,16 @@ if(isset($_POST['submit'])){
             if($haslo2 == $haslo3){
                 $sql = 'UPDATE uzytkownicy SET Haslo = "' . md5($haslo2) . '" WHERE IDUzytkownika = ' . $_SESSION['dane_usera']['id'] . ';';
                 $connect->query($sql);
+                Flash::setMessage("Pomyślnie zmieniono hasło.", "success");
                 header('Location: ' . ROOT_URL);
             } else {
-                echo "Nowe hasła się nie zgadzają.";
+                Flash::setMessage("Nowe hasła się nie zgadzają.", "error");
             }
         } else {
-            echo "Stare hasło nieprawidłowe.";
+            Flash::setMessage("Stare hasło nieprawidłowe.", "error");
         }
     } else {
-        echo "Wszystkie pola są wymagane.";
+        Flash::setMessage("Wszystkie pola są wymagane.","error");
     }
 }
 ?>
