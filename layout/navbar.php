@@ -34,6 +34,9 @@
 				<li><a href="<?php echo ROOT_URL; ?>views/listall.php">Wszyskie</a></li>
 				<li><a href="<?php echo ROOT_URL; ?>views/listall.php">Wyszukaj</a></li>
 				<li><a href="<?php echo ROOT_URL; ?>views/przepis.php?id=0">Losowy</a></li>
+				<?php if(isset($_SESSION['zalogowany'])) : ?>
+				<li><a href="<?php echo ROOT_URL; ?>search.php">Lodówka</a></li>
+				<?php endif; ?>
 			</ul>
 		</div>
 	</div>
