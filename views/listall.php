@@ -1,6 +1,7 @@
 <?php 
     session_start();
     include '../config.php';
+    include '../Flash.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +10,7 @@
 <body>
     <?php include '../layout/navbar.php' ?>
 
+    <?php Flash::display(); ?>
 
 	<!-- Hero section -->
 	<section class="page-top-section setbg" style="background-image: url(<?php echo ROOT_URL.'img/page-top-bg.jpg' ?>);">
@@ -26,7 +28,7 @@
 				<form class="big-search-form"  method="post" action="listall.php">
 					<select name="pokaz" id="pokazSelect" type="text">
                         <option value="0">Wszystkie</option>
-                        <option value="1">Dające się zrealizować</option>
+                        <option value="1">Z lodówki</option>
 					</select>
 					<select name="sortowanie" id="sortSelect" type="text">
                         <option value="0">Nazwa A-Z</option>
@@ -34,8 +36,8 @@
                         <option value="2">Czas rosnąco</option>
                         <option value="3">Czas malejąco</option>
 					</select>
-					<input type="text" placeholder="Search Receipies">
-					<button class="bsf-btn" name="sortuj" type="submit">Search</button>
+					<input name="nazwa" type="text" placeholder="Wyszukaj przepis">
+					<button class="bsf-btn" name="sortuj" type="submit">Szukaj</button>
 				</form>
 			</div>
 		</div>

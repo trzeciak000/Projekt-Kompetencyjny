@@ -55,7 +55,7 @@
 					<span><?php echo $kat ?></span>
 				</div>
 				<h2><?php echo $przepis['Nazwa']; ?></h2>
-				<div class="recipe-date">15 Grudnia, 2018</div>
+				<div class="recipe-date">14 Stycznia, 2019</div>
 				<!--<div class="rating">
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
