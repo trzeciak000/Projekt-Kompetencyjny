@@ -57,6 +57,33 @@ ol {
 }
 
 /*---------------------
+	PortNoX CSS
+-----------------------*/
+
+.fullscreen {
+    width: 100%;
+    height: 100vh;
+}
+
+.bg-pink {
+	background: #ff2a6b;
+}
+
+.btn, .form-control, .alert {
+	border-radius: 0 !important;
+}
+
+.alert {
+    z-index: 1000;
+    position: fixed;
+    top:20%;
+    left:50%;
+	transform: translate(-50%, -50%);
+	font-size: 1.25rem;
+}
+
+
+/*---------------------
 	Helper CSS
 -----------------------*/
 
@@ -94,7 +121,7 @@ ol {
 	font-weight: 700;
 }
 
-.set-bg {
+.setbg {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top center;
@@ -555,6 +582,11 @@ ol {
 	margin-bottom: 30px;
 }
 
+.recipe .recipe-image {
+	height: 300px;
+	width: 100%;
+}
+
 .recipe .recipe-info-warp {
 	position: absolute;
 	width: 100%;
@@ -904,7 +936,7 @@ ol {
 ---------------------*/
 
 .sf-warp {
-	width: 1229px;
+	width: 100%;
 	margin: 72px auto 0;
 	padding: 44px 0;
 	background: #ff2a6b;

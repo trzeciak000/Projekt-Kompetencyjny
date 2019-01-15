@@ -1,6 +1,8 @@
 <?php
 session_start();
 require "config.php";
+require "Flash.php";
+
 $i = 0;
 if( isset($_SESSION['dane_usera']['id']) )
 {
@@ -17,23 +19,30 @@ if( isset($_SESSION['dane_usera']['id']) )
 	JOIN skladniki AS s ON s.IDSkladnika=m.IDSkladnika";
 	$wynik = mysqli_query( $conn, $sql );
 ?>
-<!doctype html>
-<html lang="pl">
-  <head>
-    <!-- meta -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>What2Eat</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/custom.css">
-  </head>
-  <body>
-    <div class="fullscreen">
-        <div class="container">
-          <div class="row" style="align-items: center; justify-content: center;">
+<!doctype html>
+<?php include 'layout/head.php'; ?>
+
+<body>
+<?php include 'layout/navbar.php'; ?>
+
+<section class="page-top-section setbg" style="background-image: url(<?php echo ROOT_URL; ?>img/page-top-bg.jpg);">
+	<div class="container">
+		<h2>Moja Lodówka</h2>
+	</div>
+</section>
+
+<section class="fridge-section">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
             <div class="col-md-4">
+
+            </div>
+        </div>
+    </div>
+</section>
+    
+   
                 <form action="proces_search.php" method="post" class="centeredform" >
 <?php
 	while( $rzad = mysqli_fetch_assoc( $wynik ) )
@@ -97,58 +106,8 @@ if( isset($_SESSION['dane_usera']['id']) )
             </div>
 
 
-
-
-            <div class="col-md-7 text-center">
-              <div class="row">
-
-                <div class="col-md-4 mb-4">
-                  <div class="square">
-                    <a class="link" href="views/losowy_przepis.php">
-                      <div class="content" style="background-image: url(https://i0.wp.com/slowcookergourmet.net/wp-content/uploads/2018/02/Instant-Pot-Spaghetti-4-of-5.jpg?resize=500%2C500&ssl=1); background-size: cover;">
-                        <p class="text-light" style="font-size: 1.25rem">Spaghetti z kurczakiem</p> 
-                      </div>
-                    </a>
-                  </div>          
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="square">
-                      <div class="content" style="background-image: url(https://www.przyslijprzepis.pl/media/cache/default_view/uploads/media/recipe/0002/62/79806fd95cd24598bf6575ae4241e2c61431e811.jpeg); background-size: cover;">
-                        <p class="text-light" style="font-size: 1.25rem">Tagliatelle z kurczakiem</p> 
-                      </div>
-                    </div>          
-                  </div>
-
-                  <div class="col-md-4 mb-4">
-                      <div class="square">
-                        <div class="content" style="background-image: url(https://www.przyslijprzepis.pl/media/cache/gallery_view/uploads/media/recipe/0001/81/f984bcfaab0c9e5762028335c594db70ede517ed.jpeg); background-size: cover;">
-                          <p class="text-light" style="font-size: 1.25rem">Makaron smażony z kurczakiem</p> 
-                        </div>
-                      </div>          
-                    </div>
-
-                    <div class="col-md-4 mb-4">
-                        <div class="square">
-                          <div class="content" style="background-image: url(https://www.przyslijprzepis.pl/media/cache/gallery_view/uploads/media/recipe/0002/34/b1c877d349dc2e29f82ac47b1332bdd11c4ed0d2.jpeg); background-size: cover;">
-                            <p class="text-light" style="font-size: 1.25rem">Noodle z orientalnym kurczakiem </p> 
-                          </div>
-                        </div>          
-                      </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
-
-    <!-- JavaScript -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/all.min.js"></script>
-	<script>
+<?php include 'layout/scripts.php'; ?>
+<script>
 $(document).ready(function(){
 	//dodawanie wierszy
     $("#dodajButton").click(function(){
@@ -177,6 +136,6 @@ $(document).ready(function(){
     });
 	
 });
-	</script>
-  </body>
+</script>
+</body>
 </html>
