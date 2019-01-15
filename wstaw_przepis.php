@@ -62,7 +62,7 @@ include 'Flash.php';
     			</div>
 				<label class="col-sm-1 col-form-label font-weight-bold text-light">Ilość:</label>
 				<div class="col-sm-2">
-					<input type="text" name="ilosc_0" pattern="^\d*\.?\d*$" class="form-control">
+					<input type="text" name="ilosc_0" pattern="^\d*?\.?\d*$" class="form-control">
     			</div>
 				<label class="col-sm-1 col-form-label font-weight-bold text-light">Jednostka:</label>
 				<div class="col-sm-2">
@@ -119,7 +119,7 @@ include 'Flash.php';
     					</div>
 						<label class="col-sm-1 col-form-label font-weight-bold text-light">Ilość:</label>
 						<div class="col-sm-2">
-							<input type="text" name="ilosc_${is}" pattern="^\d*\.?\d*$" class="form-control">
+							<input type="text" name="ilosc_${is}" pattern="^\d*?\.?\d*$" class="form-control">
     					</div>
 						<label class="col-sm-1 col-form-label font-weight-bold text-light">Jednostka:</label>
 						<div class="col-sm-2">
