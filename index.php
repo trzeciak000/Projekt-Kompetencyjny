@@ -1,5 +1,27 @@
 <?php
+	session_start();
 	require 'config.php';
+	include 'Flash.php';
+
+	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    $conn->query("SET CHARSET utf8");
+	$sql = "SELECT * FROM przepisy WHERE visible = 1 ORDER BY data_dodania DESC LIMIT 6";
+
+	$result = $conn->query($sql);
+
+    $przepisy = array();
+    while($row = $result->fetch_assoc()){
+        array_push($przepisy, $row);
+    }
+
+    $sql = "SELECT * FROM kategorie;";
+    $result = $conn->query($sql);
+    $kategorie = array();
+    while($row = $result->fetch_assoc()){
+        array_push($kategorie, $row);
+    }
+	
+	$count = count($przepisy);
 ?>
 
 <!DOCTYPE html>
@@ -8,6 +30,7 @@
 <?php include 'layout/head.php'; ?>
 
 <body>
+	<?php Flash::display(); ?>
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -18,7 +41,7 @@
 	<!-- Hero section -->
 	<section class="hero-section">
 		<div class="hero-slider owl-carousel">
-			<div class="hero-slide-item setbg" data-setbg="img/slider-bg-1.jpg">
+			<div class="hero-slide-item setbg" style="background-image: url(img/slider-bg-1.jpg);">
 				<div class="hs-text">
 					<h2 class="hs-title-1"><span>Wspaniałe przepisy</span></h2>
 					<h2 class="hs-title-2"><span>prosto od Grupy I</span></h2>
@@ -36,24 +59,32 @@
 				<h2>Najnowsze przepisy</h2>
 			</div>
 			<div class="row">
-				
+				<?php foreach ($przepisy as $przepis) : ?>
+				<?php
+					$sql = "SELECT Link FROM obrazy_przepisy WHERE IDPrzepisu = ".$przepis['IDPrzepisu']." LIMIT 1;";
+					$zdjecie = $conn->query($sql)->fetch_assoc();
+					$zdjecie = $zdjecie['Link'];
+				?>
 				<div class="col-lg-4 col-md-6">
-					<div class="recipe">
-						<img src="img/recipes/1.jpg" alt="">
-						<div class="recipe-info-warp">
-							<div class="recipe-info">
-								<h3>Pizza</h3>
+					<a href="<?php echo ROOT_URL.'views/przepis.php?id='.$przepis['IDPrzepisu']; ?>">
+						<div class="recipe">
+							<div class="recipe-image setbg" style="background-image: url(<?php echo ROOT_URL.'img/przepisy/'.$zdjecie ?>);"></div>
+							<div class="recipe-info-warp">
+								<div class="recipe-info">
+									<h3><?php echo $przepis['Nazwa'] ?></h3>
+								</div>
 							</div>
 						</div>
-					</div>
+					</a>
 				</div>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</section>
 	<!-- Recipes section end -->
 
 
-	<!-- Footer widgets section -->
+	<!--
 	<section class="bottom-widgets-section spad">
 		<div class="container">
 			<div class="row">
@@ -231,10 +262,10 @@
 			</div>
 		</div>
 	</section>
-	<!-- Footer widgets section end -->
+	-->
 
 
-	<!-- Review section end -->
+	<!--
 	<section class="review-section">
 		<div class="container">
 			<div class="row">
@@ -289,7 +320,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- Review section end -->
+	-->
 
 
 	<!--
