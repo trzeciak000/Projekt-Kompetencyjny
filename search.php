@@ -51,11 +51,11 @@ if(!isset($_SESSION['zalogowany'])) {
     			</div>
 				<label class="col-sm-1 col-form-label font-weight-bold text-light">Ilość:</label>
 				<div class="col-sm-2">
-					<input type="text" placeholder="Ilość" value="<?php echo $rzad['Ilosc'];?>" name="<?php echo "ilosc_".$i;?>" pattern="^\d*\.?\d*$" class="form-control">
+					<input type="text" placeholder="1, 5.5, 200" value="<?php echo $rzad['Ilosc'];?>" name="<?php echo "ilosc_".$i;?>" pattern="^\d*\.?\d*$" class="form-control">
     			</div>
 				<label class="col-sm-1 col-form-label font-weight-bold text-light">Jednostka:</label>
 				<div class="col-sm-2">
-					<input type="text" placeholder="Jednostka"  value="<?php echo $rzad['Jednostka'];?>" name="<?php echo "jednostka_".$i;?>" class="form-control">
+					<input type="text" placeholder="g, kg, l, łyżki"  value="<?php echo $rzad['Jednostka'];?>" name="<?php echo "jednostka_".$i;?>" class="form-control">
     			</div>
 			</div>
 
@@ -71,11 +71,11 @@ if(!isset($_SESSION['zalogowany'])) {
     			</div>
 				<label class="col-sm-1 col-form-label font-weight-bold text-light">Ilość:</label>
 				<div class="col-sm-2">
-					<input type="text" placeholder="Ilość" name="<?php echo "ilosc_".$i;?>" pattern="^\d*\.?\d*$" class="form-control">
+					<input type="text" placeholder="1, 5.5, 200" name="<?php echo "ilosc_".$i;?>" pattern="^\d*\.?\d*$" class="form-control">
     			</div>
 				<label class="col-sm-1 col-form-label font-weight-bold text-light">Jednostka:</label>
 				<div class="col-sm-2">
-					<input type="text" placeholder="Jednostka" name="<?php echo "jednostka_".$i;?>" class="form-control">
+					<input type="text" placeholder="g, kg, l, łyżki" name="<?php echo "jednostka_".$i;?>" class="form-control">
     			</div>
 			</div>
 
@@ -84,8 +84,8 @@ if(!isset($_SESSION['zalogowany'])) {
               <input id="iloscSkladnikow" type="number" name="ilosc_skladnikow" value="<?php echo $i?>" hidden>
 			  <input type="text" name="id_uzytkownika" value="<?php echo $IDUzytkownika?>" hidden>
               <!--<button id="dodajButton" class="btn btn-info btn-block"><i class="fas fa-plus"></i></button>-->
-			  <input type="button" id="dodajButton" value="+">
-			  <input type="submit" value="submit">
+			  <input type="button" class="btn btn-light btn-block" id="dodajButton" value="+">
+			  <input type="submit" class="btn btn-dark btn-block" value="Dodaj składniki">
         </form>
     </div>
 </section>
@@ -97,23 +97,19 @@ $(document).ready(function(){
     $("#dodajButton").click(function(){
 		var is = $("#iloscSkladnikow").val();
         $("#dodajButton").before(`
-			<div class="input-group mb-3">
-				<input type="text" class="form-control" 
-					placeholder="Produkt"
-					style="120px" name="nazwa_${is}">
-					
-				<div class="input-group-append">
-				  <input type="text" pattern="^\\d*\\.?\\d*$"
-					class="input-group" placeholder="Ilosc"
-					style="width: 60px" name="ilosc_${is}">
-					
-				  <div class="input-group-append">
-					  <input type="text" class="input-group-text"
-					  placeholder="J."
-					  style="width: 60px"
-					  name="jednostka_${is}">
-				  </div>
-				</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label font-weight-bold text-light">Składnik:</label>
+				<div class="col-sm-4">
+					<input type="text" placeholder="Nazwa" name="<?php echo "nazwa_".$i;?>" class="form-control">
+    			</div>
+				<label class="col-sm-1 col-form-label font-weight-bold text-light">Ilość:</label>
+				<div class="col-sm-2">
+					<input type="text" placeholder="1, 5.5, 200" name="<?php echo "ilosc_".$i;?>" pattern="^\d*\.?\d*$" class="form-control">
+    			</div>
+				<label class="col-sm-1 col-form-label font-weight-bold text-light">Jednostka:</label>
+				<div class="col-sm-2">
+					<input type="text" placeholder="g, kg, l, łyżki" name="<?php echo "jednostka_".$i;?>" class="form-control">
+    			</div>
 			</div>
 		`);
 		$("#iloscSkladnikow").val( parseInt(is) + 1);
