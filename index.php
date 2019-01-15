@@ -19,8 +19,23 @@
     $kategorie = array();
     while($row = $result->fetch_assoc()){
         array_push($kategorie, $row);
-    }
+	}
 	
+	$sql = "SELECT * FROM przepisy WHERE visible = 1 ORDER BY ocena DESC LIMIT 5";
+	$result = $conn->query($sql);
+	$best = array();
+    while($row = $result->fetch_assoc()){
+        array_push($best, $row);
+	}
+	
+	$sql = "SELECT * FROM przepisy WHERE visible = 1 ORDER BY IDPrzepisu DESC LIMIT 5";
+	$result = $conn->query($sql);
+	$most = array();
+    while($row = $result->fetch_assoc()){
+        array_push($most, $row);
+    }
+
+
 	$count = count($przepisy);
 ?>
 
@@ -71,7 +86,8 @@
 							<div class="recipe-image setbg" style="background-image: url(<?php echo ROOT_URL.'img/przepisy/'.$zdjecie ?>);"></div>
 							<div class="recipe-info-warp">
 								<div class="recipe-info">
-									<h3><?php echo $przepis['Nazwa'] ?></h3>
+									<h3 class="text-capitalize"><?php echo $przepis['Nazwa'] ?></h3>
+									
 								</div>
 							</div>
 						</div>
@@ -84,244 +100,79 @@
 	<!-- Recipes section end -->
 
 
-	<!--
+	
 	<section class="bottom-widgets-section spad">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4 col-md-6 ftw-warp">
+				<div class="col-md-6 ftw-warp">
 					<div class="section-title">
-						<h3>Top rated recipes</h3>
+						<h3>Najwyżej oceniane</h3>
 					</div>
 					<ul class="sp-recipes-list">
+						<?php foreach ($best as $przepis) : 
+							$sql = "SELECT Link FROM obrazy_przepisy WHERE IDPrzepisu = ".$przepis['IDPrzepisu']." LIMIT 1;";
+							$zdjecie = $conn->query($sql)->fetch_assoc();
+							$zdjecie = $zdjecie['Link'];
+
+							$phpdate = strtotime($przepis['data_dodania']);
+							$mysqldate = date( 'd.m.Y', $phpdate);
+						?>
 						<li>
-							<div class="rl-thumb setbg" data-setbg="img/thumb/1.jpg"></div>
+							<div class="rl-thumb setbg" style="background-image: url(<?php echo ROOT_URL.'img/przepisy/'.$zdjecie ?>)"></div>
 							<div class="rl-info">
-								<span>March 14, 2018</span>
-								<h6>Italian pasta</h6>
+								<span><?php echo $mysqldate; ?></span>
+								<a href="<?php echo ROOT_URL.'views/przepis.php?id='.$przepis['IDPrzepisu']; ?>"><h6 class="text-capitalize"><?php echo $przepis['Nazwa']; ?></h6></a>
 								<div class="rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star is-fade"></i>
+									<?php for ($i = 1; $i <= 5; $i++) {
+										if ($i <= intval($przepis['ocena'])) {
+											echo '<i class="fa fa-star"> </i>';
+										} else {
+											echo '<i class="fa fa-star is-fade"> </i>';
+										}
+									}
+									?>
 								</div>
 							</div>
 						</li>
-						<li>
-							<div class="rl-thumb setbg" data-setbg="img/thumb/2.jpg"></div>
-							<div class="rl-info">
-								<span>March 14, 2018</span>
-								<h6>French Onion Soup</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star is-fade"></i>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="rl-thumb setbg" data-setbg="img/thumb/3.jpg"></div>
-							<div class="rl-info">
-								<span>March 14, 2018</span>
-								<h6>Homemade  pasta</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star is-fade"></i>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="rl-thumb setbg" data-setbg="img/thumb/4.jpg"></div>
-							<div class="rl-info">
-								<span>March 14, 2018</span>
-								<h6>Onion Soup Gratinee</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star is-fade"></i>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="rl-thumb setbg" data-setbg="img/thumb/4.jpg"></div>
-							<div class="rl-info">
-								<span>March 14, 2018</span>
-								<h6>Feta Cheese Burgers</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star is-fade"></i>
-								</div>
-							</div>
-						</li>
+						<?php endforeach; ?>
 					</ul>
 				</div>
-				<div class="col-lg-4 col-md-6 ftw-warp">
+				<div class="col-md-6 ftw-warp">
 					<div class="section-title">
-						<h3>Most liked recipes</h3>
+						<h3>Najczęściej robione</h3>
 					</div>
 					<ul class="sp-recipes-list">
+						<?php foreach ($most as $przepis) : 
+							$sql = "SELECT Link FROM obrazy_przepisy WHERE IDPrzepisu = ".$przepis['IDPrzepisu']." LIMIT 1;";
+							$zdjecie = $conn->query($sql)->fetch_assoc();
+							$zdjecie = $zdjecie['Link'];
+
+							$phpdate = strtotime($przepis['data_dodania']);
+							$mysqldate = date( 'd.m.Y', $phpdate);
+						?>
 						<li>
-							<div class="rl-thumb setbg" data-setbg="img/thumb/6.jpg"></div>
+							<div class="rl-thumb setbg" style="background-image: url(<?php echo ROOT_URL.'img/przepisy/'.$zdjecie ?>)"></div>
 							<div class="rl-info">
-								<span>March 14, 2018</span>
-								<h6>Traditional Food</h6>
+								<span><?php echo $mysqldate; ?></span>
+								<a href="<?php echo ROOT_URL.'views/przepis.php?id='.$przepis['IDPrzepisu']; ?>"><h6 class="text-capitalize"><?php echo $przepis['Nazwa']; ?></h6></a>
 								<div class="rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star is-fade"></i>
+									<?php for ($i = 1; $i <= 5; $i++) {
+										if ($i <= intval($przepis['ocena'])) {
+											echo '<i class="fa fa-star"> </i>';
+										} else {
+											echo '<i class="fa fa-star is-fade"> </i>';
+										}
+									}
+									?>
 								</div>
 							</div>
 						</li>
-						<li>
-							<div class="rl-thumb setbg" data-setbg="img/thumb/7.jpg"></div>
-							<div class="rl-info">
-								<span>March 14, 2018</span>
-								<h6>Baked Salmon</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star is-fade"></i>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="rl-thumb setbg" data-setbg="img/thumb/8.jpg"></div>
-							<div class="rl-info">
-								<span>March 14, 2018</span>
-								<h6>Deep Fried Fish</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star is-fade"></i>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="rl-thumb setbg" data-setbg="img/thumb/9.jpg"></div>
-							<div class="rl-info">
-								<span>March 14, 2018</span>
-								<h6>Raw Tomato Soup</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star is-fade"></i>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="rl-thumb setbg" data-setbg="img/thumb/10.jpg"></div>
-							<div class="rl-info">
-								<span>March 14, 2018</span>
-								<h6>Vegan Food</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star is-fade"></i>
-								</div>
-							</div>
-						</li>
+						<?php endforeach; ?>
 					</ul>
-				</div>
-				<div class="col-lg-4">
-					<div class="sp-blog-item">
-						<div class="blog-thubm">
-							<img src="img/blog/1.jpg" alt="">
-							<div class="blog-date">
-								<span>May 04, 2018</span>
-							</div>
-						</div>
-						<div class="blog-text">
-							<h5>Italian restaurant Review</h5>
-							<span>By Maria Williams</span>
-							<p>Donec quam felis, ultricies nec, pellente sque eu, pretium quis, sem. Nulla conseq uat massa quis enim. </p>
-							<a href="#" class="comment">2 Comments</a>
-							<a href="#" class="readmore"><i class="fa fa-angle-right"></i></a>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	-->
-
-
-	<!--
-	<section class="review-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-8 offset-lg-0 offset-md-2">
-					<div class="review-item">
-						<div class="review-thumb setbg" data-setbg="img/thumb/11.jpg">
-							<div class="review-date">
-								<span>May 04, 2018</span>
-							</div>
-						</div>
-						<div class="review-text">
-							<span>March 14, 2018</span>
-							<h6>Feta Cheese Burgers</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star is-fade"></i>
-							</div>
-							<div class="author-meta">
-								<div class="author-pic setbg" data-setbg="img/author.jpg"></div>
-								<p>By Janice Smith</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-8 offset-lg-0 offset-md-2">
-					<div class="review-item">
-						<div class="review-thumb setbg" data-setbg="img/thumb/12.jpg">
-							<div class="review-date">
-								<span>May 04, 2018</span>
-							</div>
-						</div>
-						<div class="review-text">
-							<span>March 14, 2018</span>
-							<h6>Mozarella Pasta</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star is-fade"></i>
-							</div>
-							<div class="author-meta">
-								<div class="author-pic setbg" data-setbg="img/author.jpg"></div>
-								<p>By Janice Smith</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	-->
-
 
 	<!--
 	<div class="gallery">
