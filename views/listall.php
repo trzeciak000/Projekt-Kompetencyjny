@@ -69,7 +69,7 @@
     
     <?php include '../layout/footer.php' ?>
     <?php include '../layout/scripts.php' ?>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
 	function wszystkiePrzepisyCall() {
 		var call = []
