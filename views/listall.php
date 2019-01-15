@@ -67,11 +67,11 @@
         </div>
     </div>
     
-    <?php include '../layout/footer.php' ?>
-    <?php include '../layout/scripts.php' ?>
+    <?php //include '../layout/footer.php' ?>
+    <?php //include '../layout/scripts.php' ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-	function wszystkiePrzepisyCall() {
+	function przepisyCall() {
 		var call = []
 		call[0] = "wszystkie_przepisy.php"
 		call[1] = "wykonywalne_przepisy.php"
@@ -86,9 +86,9 @@
 	}
 	$(document).ready(function()
 	{
-		wszystkiePrzepisyCall();
-		$(":root").on("change","#sortSelect",wszystkiePrzepisyCall);
-		$(":root").on("change","#pokazSelect",wszystkiePrzepisyCall);
+		przepisyCall();
+		$(":root").on("change","#sortSelect",przepisyCall);
+		$(":root").on("change","#pokazSelect",przepisyCall);
 	});
 	</script>
 </body>
