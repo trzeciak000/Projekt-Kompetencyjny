@@ -1,60 +1,123 @@
 <?php
 session_start();
 include 'config.php';
+include 'Flash.php';
 ?>
 
 <!DOCTYPE html>
 <html>
 <?php include 'layout/head.php'; ?>
 <body>
-	<?php include 'layout/navbar.php'; ?>
+	<?php 
+		include 'layout/navbar.php'; 
+		Flash::display();
+	?>
+	<div class="container">
+		<form action="proces_wstaw_przepis.php" method="post" enctype="multipart/form-data">
+			<div class="custom-file mb-3">
+  				<input type="file" class="custom-file-input" id="customFile" name="obraz" accept="image/*">
+  				<label class="custom-file-label" for="customFile">Wybierz zdjęcie</label>
+			</div>
+			<div class="form-group row">
+    			<label class="col-sm-2 col-form-label">Nazwa:</label>
+    			<div class="col-sm-10">
+    				<input type="text" name="nazwa" class="form-control" placeholder="Nazwa">
+    			</div>
+			</div>
+			<div class="form-group row">
+    			<label class="col-sm-2 col-form-label">Źródło:</label>
+    			<div class="col-sm-10">
+    				<input type="text" name="zrodlo" class="form-control" placeholder="Źródło">
+    			</div>
+			</div>
+			<div class="form-group row">
+    			<label class="col-sm-2 col-form-label">Czas przygotowania:</label>
+    			<div class="col-sm-10">
+    				<input type="text" name="czas_przygotowania" pattern="^([0-1][0-9]|[2][0-3]):([0-5][0-9])$" class="form-control" placeholder="01:30">
+    			</div>
+			</div>
+			<div class="form-group row">
+    			<label class="col-sm-2 col-form-label">Ilość porcji:</label>
+    			<div class="col-sm-10">
+    				<input type="number" name="ilosc_porcji" class="form-control" placeholder="1">
+    			</div>
+			</div>
+			<div class="form-group row">
+    			<label class="col-sm-2 col-form-label">Kategoria:</label>
+    			<div class="col-sm-10">
+    				<input type="text" name="kategoria" class="form-control" placeholder="Kategoria">
+    			</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Składnik:</label>
+				<div class="col-sm-4">
+					<input type="text" name="skladnik_0" class="form-control">
+    			</div>
+				<label class="col-sm-1 col-form-label">Ilość:</label>
+				<div class="col-sm-2">
+					<input type="text" name="ilosc_0" pattern="^\d*\.?\d*$" class="form-control">
+    			</div>
+				<label class="col-sm-1 col-form-label">Jednostka:</label>
+				<div class="col-sm-2">
+					<input type="text" name="jednostka_0" class="form-control">
+    			</div>
+			</div>
+			<div class="form-group" id="wierszDodajButtona">
+				<input class="btn btn-block btn-dark" type="button" id="dodajButton" value="+">
+			</div>
+			<div class="form-group row">
+    			<label class="col-sm-2 col-form-label">Przygotowanie:</label>
+    			<div class="col-sm-10">
+					<textarea name="przygotowanie" rows="6" cols="30" class="form-control"></textarea>
+    			</div>
+			</div>
+			<div class="form-group row">
+    			<label class="col-sm-2 col-form-label">Opis:</label>
+    			<div class="col-sm-10">
+					<textarea name="opis" rows="6" cols="30" class="form-control"></textarea>
+    			</div>
+			</div>
+			<input id="iloscSkladnikow" type="number" name="ilosc_skladnikow" value="1" hidden>
+			<div class="form-group">
+				<input class="btn btn-block btn-danger mb-5" type="submit" value="Dodaj przepis">
+			</div>
+		</form>
+	</div>
 	
-	<form action="proces_wstaw_przepis.php" method="post" enctype="multipart/form-data">
-		Zdjęcie: <input type="file" name="obraz" accept="image/*">
-		<table>
-		<tr> <td>Nazwa:</td><td><input type="text" name="nazwa"></td> <td></td> </tr>
-		<tr> <td>Źródło:</td><td><input type="text" name="zrodlo"></td> <td></td> </tr>
-		<tr> <td>Czas przygotowania:</td><td><input type="text" name="czas_przygotowania" pattern="^([0-1][0-9]|[2][0-3]):([0-5][0-9])$"></td> <td></td> </tr>
-		<tr> <td>Ilość porcji:</td><td><input type="number" name="ilosc_porcji"></td> <td></td> </tr>
-		<tr> <td>Kategoria:</td><td><input type="text" name="kategoria"></td> <td></td> </tr>
-		<tr> <td>Skladnik</td> <td>ilość</td> <td>jednostka</td> </tr>
-		<tr>
-			<td><input type="text" name="skladnik_0"></td> 
-			<td><input type="text" name="ilosc_0" pattern="^\d*\.?\d*$"></td>
-			<td><input type="text" name="jednostka_0"></td>
-		</tr>
-		<tr id="wierszDodajButtona"> <td><input type="button" id="dodajButton" value="+"></td> <td></td> <td></td> </tr>
-		</table>
-		<table>
-		<tr> <td>Przygotowanie:</td><td><textarea name="przygotowanie" rows="6" cols="30"></textarea></td> </tr>
-		<tr> <td>Opis:</td><td><textarea name="opis" rows="6" cols="30"></textarea></td> </tr>
-		</table>
-		<input id="iloscSkladnikow" type="number" name="ilosc_skladnikow" value="1" hidden>
-		<input type="submit" value="submit">
-	</form>
-	<p>
 	<?php
 	#dane LOGa. użyć przy testowaniu
-	if( count($_GET) > 0 ){ echo $_GET['niepowodzenie']; }?>
-	</p>
-	<p>
-	<?php
-	if( count($_GET) > 0 ){ echo $_GET['powodzenie']; }?>
-	</p>
+	if( count($_GET) > 0 ){ Flash::setMessage($_GET['niepowodzenie'], 'error'); }
+	if( count($_GET) > 0 ){ Flash::setMessage($_GET['powodzenie'], 'success'); }
+	?>
 	
 	<?php include 'layout/scripts.php'; ?>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
+		$('#customFile').change(function() {
+  			var i = $(this).prev('label').clone();
+  			var file = $('#customFile')[0].files[0].name;
+  			$(this).next('label').text(file);
+		});
+
 		$(document).ready(function(){
 			//dodawanie wierszy
 		    $("#dodajButton").click(function(){
 				var is = $("#iloscSkladnikow").val();
 		        $("#wierszDodajButtona").before(`
-					<tr>
-						<td><input type="text" name="skladnik_${is}"></td> 
-						<td><input type="text" name="ilosc_${is}" pattern="^\\d*\\.?\\d*$"></td>
-						<td><input type="text" name="jednostka_${is}"></td>
-					</tr>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Składnik:</label>
+						<div class="col-sm-4">
+							<input type="text" name="skladnik_${is}" class="form-control">
+    					</div>
+						<label class="col-sm-1 col-form-label">Ilość:</label>
+						<div class="col-sm-2">
+							<input type="text" name="ilosc_${is}" pattern="^\d*\.?\d*$" class="form-control">
+    					</div>
+						<label class="col-sm-1 col-form-label">Jednostka:</label>
+						<div class="col-sm-2">
+							<input type="text" name="jednostka_${is}" class="form-control">
+    					</div>
+					</div>
 				`);
 				$("#iloscSkladnikow").val( parseInt(is) + 1);
 		    });
