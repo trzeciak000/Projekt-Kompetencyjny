@@ -1,22 +1,26 @@
 <?php
     require "../config.php";
-    include "../navbar.php";
     $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     $conn->query("SET CHARSET utf8");
-	
-	if($_POST['sortowanie'] == 0) {
-		$sql = "SELECT * FROM przepisy WHERE visible = 1 ORDER BY Nazwa";
-		$result = $conn->query($sql);
-	} else if($_POST['sortowanie'] == 1) {
-		$sql = "SELECT * FROM przepisy WHERE visible = 1 ORDER BY Nazwa DESC";
-		$result = $conn->query($sql);
-	} else if($_POST['sortowanie'] == 2) {
-		$sql = "SELECT * FROM przepisy WHERE visible = 1 ORDER BY CzasPrzygotowania";
-		$result = $conn->query($sql);
-	} else if($_POST['sortowanie'] == 3) {
-		$sql = "SELECT * FROM przepisy WHERE visible = 1 ORDER BY CzasPrzygotowania DESC";
-		$result = $conn->query($sql);
+	$sql = "SELECT * FROM przepisy WHERE visible = 1";
+
+	switch ($_POST['sortowanie']) {
+		case 0:
+			$sql =  $sql." ORDER BY Nazwa";
+			break;
+		case 1:
+			$sql =  $sql." ORDER BY Nazwa DESC";
+			break;
+		case 2:
+			$sql =  $sql." ORDER BY CzasPrzygotowania";
+			break;
+		case 3:
+			$sql =  $sql." ORDER BY CzasPrzygotowania DESC";
+			break;
+		default:
+			break;
 	}
+	$result = $conn->query($sql);
 
     $przepisy = array();
     while($row = $result->fetch_assoc()){
@@ -30,26 +34,28 @@
         array_push($kategorie, $row);
     }
 	
+	$count = count($przepisy);
 ?>
 <?php foreach ($przepisy as $przepis) : ?>
 <?php
-	$sql = "SELECT Link FROM obrazy_przepisy WHERE IDPrzepisu = '" . $przepis['IDPrzepisu'] . "' LIMIT 1;";
+	$sql = "SELECT Link FROM obrazy_przepisy WHERE IDPrzepisu = ".$przepis['IDPrzepisu']." LIMIT 1;";
 	$zdjecie = $conn->query($sql)->fetch_assoc();
 	$zdjecie = $zdjecie['Link'];
 ?>
-<div class="card">
-	<img class="card-img-top"
-		<?php if ($zdjecie == null || $zdjecie == "") : ?> src="<?php echo ROOT_PATH; ?>img/przepisy/brak.png"
-		<?php else : ?> src="<?php echo ROOT_PATH; ?>img/przepisy/<?php echo $zdjecie; ?>"<?php endif; ?>
-	>    
-	<div class="card-body">
-		<h5 class="card-title"><?php echo $przepis['Nazwa']; ?></h5>
-		<p class="card-text"><?php echo $przepis['Opis'] ?></p>
-		<p class="card-tex">
-			<i class="fas fa-th"></i> <?php foreach($kategorie as $row) {if($row['id'] == $przepis['id_kategorii']){echo $row['kategoria']; break;}}?>
-			<i class="far fa-clock"></i> <?php echo $przepis['CzasPrzygotowania']; ?>
-		</p>
-	</div>
-	<a class="btn btn-info" href="przepis.php?id=<?php echo $przepis['IDPrzepisu']; ?>">Przejdź</a>
+<div class="col-lg-4 col-md-6">
+	<a href="<?php echo ROOT_URL.'views/przepis.php?id='.$przepis['IDPrzepisu']; ?>">
+		<div class="recipe">
+			<div class="recipe-image setbg" style="background-image: url(<?php echo ROOT_URL.'img/przepisy/'.$zdjecie; ?>);"></div>
+			<div class="recipe-info-warp">
+				<div class="recipe-info">
+					<h3><?php echo $przepis['Nazwa']; ?></h3>
+					<div class="rating">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</a>
 </div>
 <?php endforeach; ?>
+

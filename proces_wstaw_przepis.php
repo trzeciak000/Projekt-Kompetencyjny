@@ -5,14 +5,14 @@ mb_internal_encoding('UTF-8');
 //---------------------------------------------------------------------------------------------------------------------------------------------
 function string_obrobka($str, $conn)
 {
-	$str = mysqli_real_escape_string($str, $conn);
+	$str = mysqli_real_escape_string($conn, $str);
 	return $str;
 }
 
 function string_obrobka_case_insensitive($str, $conn)
 {
 	$str = mb_strtolower($str);
-	$str = mysqli_real_escape_string($str, $conn);
+	$str = mysqli_real_escape_string($conn, $str);
 	return $str;
 }
 
@@ -57,6 +57,7 @@ $powodzenie = '';
 $niepowodzenie = '';
 $conn = mysqli_connect( DB_HOST, DB_USER, DB_PASS, DB_NAME);
 $conn->query("SET CHARSET utf8");
+
 if (!$conn) {
 	die("Connection to server failed: " . mysqli_connect_error());
 }
