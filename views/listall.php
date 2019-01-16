@@ -20,7 +20,6 @@
 	</section>
 	<!-- Hero section end -->
 
-
 	<!-- Search section -->
 	<div class="search-form-section">
 		<div class="sf-warp">
@@ -65,7 +64,7 @@
         include '../layout/scripts.php'
     ?>
     <script>
-	function wszystkiePrzepisyCall() {
+	function przepisyCall() {
 		var call = []
 		call[0] = "wszystkie_przepisy.php"
 		call[1] = "wykonywalne_przepisy.php"
@@ -80,9 +79,9 @@
 	}
 	$(document).ready(function()
 	{
-		wszystkiePrzepisyCall();
-		$(":root").on("change","#sortSelect",wszystkiePrzepisyCall);
-		$(":root").on("change","#pokazSelect",wszystkiePrzepisyCall);
+		przepisyCall();
+		$(":root").on("change","#sortSelect",przepisyCall);
+		$(":root").on("change","#pokazSelect",przepisyCall);
 	});
 	</script>
 </body>

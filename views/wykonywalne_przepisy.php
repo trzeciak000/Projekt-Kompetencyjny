@@ -1,16 +1,18 @@
 <?php
+	session_start();
     require "../config.php";
-	include "../Flash.php";
+	  include "../Flash.php";
 
     $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     $conn->query("SET CHARSET utf8");
 	if( !isset($_SESSION['zalogowany']) )
 		Flash::setMessage('Musisz być zalogowany aby mieć dostęp do lodówki', 'error');
 		exit();
+	}
 	$IDuzytkownika = $_SESSION['dane_usera']['id'];
 	
 	$zapytanie = 
-			"SELECT p.IDPrzepisu FROM przepisy AS p
+			"SELECT * FROM przepisy AS p
 			JOIN (
 				SELECT sp.IDPrzepisu, COUNT(*) as IloscDostepnychSkladnikow FROM 
 				skladniki_przepisow AS sp

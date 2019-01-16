@@ -1,6 +1,5 @@
 <?php
     require "../config.php";
-
     $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     $conn->query("SET CHARSET utf8");
 	$sql = "SELECT * FROM przepisy WHERE visible = 1";
