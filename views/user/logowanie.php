@@ -24,7 +24,6 @@ if (isset($_POST['submit'])) {
         if (mysqli_num_rows(mysqli_query($connect, "SELECT Nazwa, Haslo FROM uzytkownicy WHERE Nazwa = '".$login."' AND Haslo = '".md5($haslo)."';")) > 0) {
             $sql = "SELECT IDUzytkownika, Nazwa, role_id, Haslo FROM uzytkownicy WHERE Nazwa='" . $login . "';";
             $result = $connect->query($sql)->fetch_assoc();
-            var_dump($result);
             $_SESSION['zalogowany'] = true;
             $_SESSION['dane_usera'] = array(
                 "id" => $result['IDUzytkownika'],
