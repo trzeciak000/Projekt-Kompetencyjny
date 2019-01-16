@@ -51,7 +51,7 @@ if(!isset($_SESSION['zalogowany'])) {
     			</div>
 				<label class="col-sm-1 col-form-label font-weight-bold text-light">Ilość:</label>
 				<div class="col-sm-2">
-					<input type="text" placeholder="1, 5.5, 200" value="<?php echo $rzad['Ilosc'];?>" name="<?php echo "ilosc_".$i;?>" pattern="^\d*\.?\d*$" class="form-control">
+					<input type="text" placeholder="1, 5.5, 200" value="<?php echo $rzad['Ilosc'];?>" name="<?php echo "ilosc_".$i;?>" pattern="^\d*?\.?\d*$" class="form-control">
     			</div>
 				<label class="col-sm-1 col-form-label font-weight-bold text-light">Jednostka:</label>
 				<div class="col-sm-2">
@@ -92,10 +92,7 @@ if(!isset($_SESSION['zalogowany'])) {
 
     <!-- JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/all.min.js"></script>
+    <?php include 'layout/scripts.php' ?>
 	<script>
 	window.onload = function() {
 		if (window.jQuery) {  
@@ -117,7 +114,7 @@ $(document).ready(function(){
     			</div>
 				<label class="col-sm-1 col-form-label font-weight-bold text-light">Ilość:</label>
 				<div class="col-sm-2">
-					<input type="text" placeholder="1, 5.5, 200" name="<?php echo "ilosc_".$i;?>" pattern="^\d*\.?\d*$" class="form-control">
+					<input type="text" placeholder="1, 5.5, 200" name="<?php echo "ilosc_".$i;?>" pattern="^\d*?\.?\d*$" class="form-control">
     			</div>
 				<label class="col-sm-1 col-form-label font-weight-bold text-light">Jednostka:</label>
 				<div class="col-sm-2">
