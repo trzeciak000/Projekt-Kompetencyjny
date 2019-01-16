@@ -71,7 +71,7 @@ if(!isset($_SESSION['zalogowany'])) {
     			</div>
 				<label class="col-sm-1 col-form-label font-weight-bold text-light">Ilość:</label>
 				<div class="col-sm-2">
-					<input type="text" placeholder="1, 5.5, 200" name="<?php echo "ilosc_".$i;?>" pattern="^\d*\.?\d*$" class="form-control">
+					<input type="text" placeholder="1, 5.5, 200" name="<?php echo "ilosc_".$i;?>" pattern="^\d*?\.?\d*$" class="form-control">
     			</div>
 				<label class="col-sm-1 col-form-label font-weight-bold text-light">Jednostka:</label>
 				<div class="col-sm-2">
