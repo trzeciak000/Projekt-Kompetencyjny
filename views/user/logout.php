@@ -4,5 +4,6 @@
     unset($_SESSION['dane_usera']);
     session_destroy();
     //redirect
-    header('Location: ../../index.php');
+    header('Location: '.ROOT_URL);
+    exit();
 ?>

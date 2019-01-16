@@ -1,4 +1,5 @@
 <?php
+	session_start();
     include "../config.php";
 
 	$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -18,14 +19,13 @@
 
 	$sql = "SELECT Link FROM obrazy_przepisy WHERE IDPrzepisu = ".($id)." LIMIT 1;";
     $zdjecie = $conn->query($sql)->fetch_assoc();
-	$zdjecie = $zdjecie["Link"];
 	
 	$sql = "SELECT kategoria FROM kategorie WHERE id =" . $przepis['id_kategorii'] . " LIMIT 1;";
     $kat = $conn->query($sql)->fetch_assoc();
     $kat = $kat['kategoria'];
 
 	$sql = "SELECT * FROM skladniki_przepisow as sp join skladniki as s on s.IDSkladnika=sp.IDSkladnika WHERE sp.IDPrzepisu=".$id.";";
-    $ingredients = mysqli_fetch_all($conn->query($sql), MYSQLI_ASSOC);
+	$ingredients = mysqli_fetch_all($conn->query($sql), MYSQLI_ASSOC);
 ?>
 
 <!doctype html>
@@ -37,7 +37,7 @@
 
 <?php include '../layout/navbar.php'; ?>
 
-<section class="page-top-section set-bg" style="background-image: url(<?php echo ROOT_URL; ?>img/page-top-bg.jpg)">
+<section class="page-top-section setbg" style="background-image: url(<?php echo ROOT_URL; ?>img/page-top-bg.jpg);">
 	<div class="container">
 		<h2>Przepis</h2>
 	</div>
@@ -45,7 +45,7 @@
 	
 <!-- Recipe image view -->
 <section class="recipe-view-section">
-	<div class="rv-warp set-bg mt-5" style="background-image: url(<?php echo ROOT_URL.'img/przepisy/'.$zdjecie; ?>)"></div>
+	<div class="rv-warp setbg mt-5" style="background-image: url(<?php echo '../img/przepisy/'.$zdjecie['Link']; ?>);"></div>
 </section>
 
 	<!-- Recipe details section -->
@@ -56,14 +56,18 @@
 					<span><?php echo $kat ?></span>
 				</div>
 				<h2><?php echo $przepis['Nazwa']; ?></h2>
-				<div class="recipe-date">15 Grudnia, 2018</div>
-				<!--<div class="rating">
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star is-fade"></i>
-				</div>-->
+				<div class="recipe-date">14 Stycznia, 2019</div>
+				<div class="rating">
+					<?php 
+					for ($i = 1; $i <= 5; $i++) {
+						if ($i <= intval($przepis['ocena'])) {
+							echo '<i class="fa fa-star"> </i>';
+						} else {
+							echo '<i class="fa fa-star is-fade"> </i>';
+						}
+					}
+					?>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-5">
@@ -80,8 +84,16 @@
 							<form class="filter-form">
                                 <?php foreach ($ingredients as $skladnik) : ?>
 								<div class="check-warp">
-									<input type="checkbox" id="one">
-									<label for="one"><?php echo $skladnik["Nazwa"]." (".$skladnik["Ilosc"]." ".$skladnik["Jednostka"].")"; ?></label>
+									<input type="checkbox">
+									<label>
+										<?php 
+											if (intval($skladnik["Ilosc"]) != 0) {
+												echo $skladnik["Nazwa"]." (".$skladnik["Ilosc"]." ".$skladnik["Jednostka"].")";
+											} else {
+												echo $skladnik["Nazwa"];
+											}
+										?>
+									</label>
 								</div>
                                 <?php endforeach; ?>
 							</form>
@@ -90,9 +102,8 @@
 				</div>
 				<div class="col-lg-7">
 					<ul class="recipe-info-list">
-						
-							<h2>Przygotowanie:</h2>
-							<p><?php echo $przepis["Przygotowanie"] ?></p>
+						<h2>Przygotowanie:</h2>
+						<p><?php echo $przepis["Przygotowanie"] ?></p>
 					</ul>
 				</div>
 			</div>
